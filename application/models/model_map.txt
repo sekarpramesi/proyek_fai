@@ -1,0 +1,33 @@
+//Nama model beserta tabel yang berhubungan pada model tersebut
+
++M_Chat (chat)
+	-chat_message //pesan pada chat
+	-chat_room 		//room pada chat
+	-user_room //hubungan antar user dan room
+
++M_Company (company)
+	-company //info tentang perusahaan
+	-user_company //hubungan antar user dan perusahaan,detail tentang pekerjaan
+
++M_Event (event)
+	-event //info tentang event,siapa yang membuat event
+	-invitation //info tentang undangan, siapa yang membuat undangan
+	-user_event //user yang mengikuti event
+	-user_invitation //user yang menerima undangan
+
++M_Interest (interest)
+	-interest //info tentang interest
+	-user_interest //hubungan antar user dan interest
+
++M_Post (post)
+	-post //info tentang post, siapa yang membuat post
+	-post_like //hubungan antar post dan like
+	-comment //info tentang comment, siapa yang membuat comment dan terdapat pada post mana
+	
++M_School (school)
+	-school //info tentang sekolah
+	-user_school //hubungan antar user dan sekolah,detail tentang riwayat sekolah
+
++M_User (user)
+	-user //info tentang user
+	-relationship //hubungan antar user,siapa yang melakukan action(friend request,declined,blocked,dll)

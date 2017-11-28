@@ -5,6 +5,7 @@ class Db extends CI_Model {
 
 	public function __construct()
 	{
+<<<<<<< HEAD
 			parent::__construct();
       $this->load->database();
 	}
@@ -67,6 +68,13 @@ class Db extends CI_Model {
     }
 
 		public function selectUserFriend($email)
+=======
+	   parent::__construct();
+       $this->load->database();
+	}
+
+	public function selectUserFriend($email)
+>>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
     {
         $this->db->where('email !=', $email);
         return $this->db->get('user')->result_array();
