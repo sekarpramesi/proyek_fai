@@ -1,0 +1,12 @@
+Interest :
+-type_interest:
+1-Hobby
+2-Music
+3-Film
+4-Book
+5-Community
+
+School:
+-type_school:
+1-High School
+2-University

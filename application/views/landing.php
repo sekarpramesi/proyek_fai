@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 
-	<title>Landing Page</title>
+	<title>NetMed</title>
 
 	<!-- Required meta tags always come first -->
 	<meta charset="utf-8">
@@ -59,12 +59,6 @@
 			<a href="<?php echo base_url();?>app/#" class="open-responsive-menu js-open-responsive-menu">
 				<svg class="olymp-menu-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-menu-icon"></use></svg>
 			</a>
-
-			<div class="nav nav-pills nav1 header-menu">
-				<div class="mCustomScrollbar">
-
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
@@ -104,102 +98,12 @@
 
 				<!-- Tab panes -->
 				<div class="tab-content">
-					<div class="tab-pane active" id="home" role="tabpanel" data-mh="log-tab">
-						<div class="title h6">Register to Olympus</div>
-						<form class="content">
-							<div class="row">
-								<div class="col-lg-6 col-md-6">
-									<div class="form-group label-floating is-empty">
-										<label class="control-label">First Name</label>
-										<input class="form-control" placeholder="" type="text">
-									</div>
-								</div>
-								<div class="col-lg-6 col-md-6">
-									<div class="form-group label-floating is-empty">
-										<label class="control-label">Last Name</label>
-										<input class="form-control" placeholder="" type="text">
-									</div>
-								</div>
-								<div class="col-xl-12 col-lg-12 col-md-12">
-									<div class="form-group label-floating is-empty">
-										<label class="control-label">Your Email</label>
-										<input class="form-control" placeholder="" type="email">
-									</div>
-									<div class="form-group label-floating is-empty">
-										<label class="control-label">Your Password</label>
-										<input class="form-control" placeholder="" type="password">
-									</div>
-
-									<div class="form-group date-time-picker label-floating">
-										<label class="control-label">Your Birthday</label>
-										<input name="datetimepicker" value="10/24/1984" />
-										<span class="input-group-addon">
-											<svg class="olymp-calendar-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-calendar-icon"></use></svg>
-										</span>
-									</div>
-
-									<div class="form-group label-floating is-select">
-										<label class="control-label">Your Gender</label>
-										<select class="selectpicker form-control">
-											<option value="MA">Male</option>
-											<option value="FE">Female</option>
-										</select>
-									</div>
-
-									<div class="remember">
-										<div class="checkbox">
-											<label>
-												<input name="optionsCheckboxes" type="checkbox">
-												I accept the <a href="<?php echo base_url();?>app/#">Terms and Conditions</a> of the website
-											</label>
-										</div>
-									</div>
-
-									<a href="<?php echo base_url();?>app/#" class="btn btn-purple btn-lg full-width">Complete Registration!</a>
-								</div>
-							</div>
-						</form>
-					</div>
-
-					<div class="tab-pane" id="profile" role="tabpanel" data-mh="log-tab">
-						<div class="title h6">Login to your Account</div>
-						<form class="content" id="login" action="<?php echo base_url();?>index.php/Home/login" method="POST">
-							<div class="row">
-								<div class="col-xl-12 col-lg-12 col-md-12">
-									<div class="form-group label-floating is-empty">
-										<label class="control-label">Your Email</label>
-										<input class="form-control" name="tuserlogin" placeholder="" type="email">
-									</div>
-									<div class="form-group label-floating is-empty">
-										<label class="control-label">Your Password</label>
-										<input class="form-control" name="tpasslogin" placeholder="" type="password">
-									</div>
-
-									<div class="remember">
-
-										<div class="checkbox">
-											<label>
-												<input name="optionsCheckboxes" type="checkbox">
-												Remember Me
-											</label>
-										</div>
-										<a href="<?php echo base_url();?>app/#" class="forgot">Forgot my Password</a>
-									</div>
-
-									<a href="#" onclick="document.forms['login'].submit();" id="btnLogin" name="btnLogin" class="btn btn-lg btn-primary full-width">Login</a>
-
-									<div class="or"></div>
-
-									<a href="<?php echo base_url();?>app/#" class="btn btn-lg bg-facebook full-width btn-icon-left"><i class="fa fa-facebook" aria-hidden="true"></i>Login with Facebook</a>
-
-									<a href="<?php echo base_url();?>app/#" class="btn btn-lg bg-twitter full-width btn-icon-left"><i class="fa fa-twitter" aria-hidden="true"></i>Login with Twitter</a>
-
-
-									<p>Don’t you have an account? <a href="<?php echo base_url();?>app/#">Register Now!</a> it’s really simple and you can start enjoing all the benefits!</p>
-								</div>
-							</div>
-						</form>
-					</div>
+					<!--register form-->
+					<?php $this->load->view('register');?>
+					<!--end register form-->
+					<!--login form-->
+					<?php $this->load->view('login');?>
+					<!--end login form-->
 				</div>
 			</div>
 		</div>

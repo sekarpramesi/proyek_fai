@@ -6,13 +6,24 @@ class User extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-<<<<<<< HEAD
-        $this->load->model('db','mod');
+		$models=array(
+			'M_User'=>'user'
+		);
+		$this->load->model($models);
 	}
 
-	public function myProfile()
+	public function index(){
+		$email = $this->session->userdata('emailnow');
+		$data["title"]="Newsfeed";
+		$data["profile"]=$this->user->selectUser($email);
+		$data["container"]=array("newsfeed/newsfeed");
+		//var_dump($data["profile"]);
+		$this->load->view('template/template',$data);
+	}
+
+	public function profile()
 	{
-		if ($this->session->userdata('emailnow'))
+		/*if ($this->session->userdata('emailnow'))
 		{
 			$email = $this->session->userdata('emailnow');
 			$this->session->unset_userdata('emailother');
@@ -74,39 +85,31 @@ class User extends CI_Controller {
 			//
 			$param['skill'] = $this->mod->selectSkill($email);
 			$this->load->view("profile", $param);
+		}*/
+		if($this->session->userdata('emailnow')){
+			$email = $this->session->userdata('emailnow');
+			$data["title"]="Profile";
+			$data["profile"]=$this->user->selectUser($email);
+			$data["container"]=array("profile/profile");
+			//var_dump($data["profile"]);
+			$this->load->view('template/template',$data);			
 		}
 		else
 		{
-			redirect("Cont/login");
+			redirect("User/index");
 		}
 	}
 
-	public function edit()
-=======
-		$this->load->helper("form");
-		$this->load->helper("url");
-		$this->load->library('form_validation');
-		$this->load->library('session');
-		$this->load->library("pagination");
-        $this->load->model('db','mod');
+	public function edit(){
 	}
-	public function index(){
-		$email = $this->session->userdata('emailnow');
-		$profile = $this->mod->selectProfile($email);
-		$data["profile"]=$profile;
-		$data["container"]=array("newsfeed");
-		//var_dump($data);
-		//$this->load->vars($data);
-		$this->load->view('template/template',$data);
-	}
+
 	
 	public function newsfeed()
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
 	{
 		if ($this->session->userdata('emailnow'))
 		{
 			$emailnow = $this->session->userdata("emailnow");
-<<<<<<< HEAD
+
 			if ($this->input->post("btnedit"))
 			{
 				$hasil = $this->mod->selectProfile($emailnow);
@@ -225,7 +228,6 @@ class User extends CI_Controller {
 			$config["base_url"] = base_url()."index.php/Cont/profileUserLain";
 			$config["total_rows"] = $this->mod->postRecordCount($emailother);
 			$config["per_page"] = 7;
-=======
 			$param['status'] = [];
 			$param['initeman'] = [];
 			$teman = $this->mod->selectFriend($emailnow);
@@ -243,7 +245,6 @@ class User extends CI_Controller {
 			$config["base_url"] = base_url()."index.php/Cont/newsfeed";
 			$config["total_rows"] = $this->mod->allFriendPostRecordCount($param['initeman']);
 			$config["per_page"] = 10;
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
 			$config["uri_segment"] = 3;
 			$config['num_tag_open'] = ' <li class="page-item">';
 			$config['num_tag_close'] = '</li>';
@@ -253,11 +254,9 @@ class User extends CI_Controller {
 			$this->pagination->initialize($config);
 			$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-<<<<<<< HEAD
 			$param['post'] = $this->mod->fetchPost($config["per_page"],$page,$emailother);
-=======
+
 			$param['post'] = $this->mod->fetchAllFriendPost($config["per_page"],$page,$param['initeman']);
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
 			$param["links"] = $this->pagination->create_links();
 			$param["halaman"] = $this->pagination->cur_page;
 
@@ -267,18 +266,17 @@ class User extends CI_Controller {
 				$post = $param['post'][$i];
 
 				$param['liked'][$post['idpost']] = $this->mod->cekButtonLike($post['idpost'],$emailnow);
-<<<<<<< HEAD
+
 
 				$param['comment'][$post['idpost']] = $this->mod->selectComment($post['idpost']);
 
-=======
+
 				$param['comment'][$post['idpost']] = $this->mod->selectComment($post['idpost']);
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
+
 				$param['countlike'][$i] = $this->mod->countLike($param['post'][$i]['idpost']);
 				$param['countcomment'][$i] = $this->mod->countComment($param['post'][$i]['idpost']);
 			}
 
-<<<<<<< HEAD
 			//notif friendreq sudah benar
 			$param['notifikasi'] = 0;
 			$friendreq = $this->mod->selectFriendReq($emailnow);
@@ -323,7 +321,7 @@ class User extends CI_Controller {
 			redirect("Cont/login");
 		}
 	}
-
+/*
 	public function addFriend()
 	{
 		if ($this->session->userdata('emailnow'))
@@ -394,49 +392,44 @@ class User extends CI_Controller {
 					$isi = $f["emailuser"] . " menolak permintaan pertemanan anda.";
 					$this->mod->insertNotif($f["friend"],$isi,'reject');
 				}
-=======
+
 			//likers
 			$param['likers'] = [];
 			foreach ($param['post'] as $p)
 			{
 				$temp = $this->mod->seeLikers($p['idpost']);
 				array_push($param['likers'], $temp);
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
+
 			}
 
 			//notif friendreq sudah benar
 			$param['notifikasi'] = 0;
-<<<<<<< HEAD
+
 			$param['notifreq'] = [];
-=======
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
 			$friendreq = $this->mod->selectFriendReq($emailnow);
 			for ($i=0; $i < count($friendreq); $i++) {
 				$cekfriend = $this->mod->ceksudahteman($emailnow,$friendreq[$i]['emailuser']);
 				if ($friendreq[$i]['friend']!=$cekfriend['emailuser'])
 				{
-<<<<<<< HEAD
+
 					$prof = $this->mod->selectProfile($friendreq[$i]['emailuser']);
 					array_push($param['notifreq'],$prof['email'].' menambahkan kamu menjadi teman ');
-=======
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
 					$param['notifikasi']++;
 				}
 			}
 			//notif acc, rej, like, comm
 			$param['notiflain'] = $this->mod->selectNotif($emailnow);
-			$param['notifikasi'] += count($param['notiflain']);
-<<<<<<< HEAD
+
 			//
 			redirect("Cont/explore");
-=======
+
 
 			$this->load->view('newsfeed',$param);
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
+
 		}
 		else
 		{
 			redirect("Cont/login");
 		}
-	}
+	}*/
 }

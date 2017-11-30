@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 
-	<title>Newsfeed</title>
+	<title><?php echo $title;?></title>
 
 	<!-- Required meta tags always come first -->
 	<meta charset="utf-8">
@@ -40,7 +40,6 @@
 </head>
 <body>
 
-
 <!-- Fixed Sidebar Right -->
 <?php $this->load->view('template/fixed_right_sidebar');?>
 <!-- ... end Fixed Sidebar Right -->
@@ -65,13 +64,8 @@
 		}?>
 		<!-- ... end Main Content -->
 
-		<!-- Right Sidebar -->
-		<?php $this->load->view('template/right_sidebar');?>
-		<!-- ... end Right Sidebar -->
-
 	</div>
 </div>
-
 
 <!-- Window-popup Update Header Photo -->
 

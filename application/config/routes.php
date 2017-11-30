@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'cont/login'; //untuk mengganti default controller
+$route['default_controller'] = 'Home'; //untuk mengganti default controller
 $route['404_override'] = ''; //kalo pny halaman err sendiri bs diisi
 $route['translate_uri_dashes'] = FALSE;
 

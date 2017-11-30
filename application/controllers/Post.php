@@ -6,7 +6,7 @@ class Post extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-<<<<<<< HEAD
+
         $this->load->model('db','mod');
 	}
 	public function uploadphoto($hasil)
@@ -359,7 +359,7 @@ class Post extends CI_Controller {
 			redirect("Cont/login");
 		}
 	}
-=======
+
 		$this->load->helper("form");
 		$this->load->helper("url");
 		$this->load->library('form_validation');
@@ -367,5 +367,4 @@ class Post extends CI_Controller {
 		$this->load->library("pagination");
         $this->load->model('db','mod');
 	}
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
 }

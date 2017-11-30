@@ -1,3 +1,4 @@
+<?php var_dump($profile);?>
 <!-- Header -->
 <header class="header" id="site-header">
 
@@ -379,7 +380,7 @@
 				</div>
 				<a href="<?php echo base_url();?>app/02-ProfilePage.html" class="author-name fn">
 					<div class="author-title">
-						<?php echo $profile['namadepan']." ".$profile['namabelakang'];?><svg class="olymp-dropdown-arrow-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+						<?php echo $profile[0]["FIRST_NAME_USER"]." ".$profile[0]["LAST_NAME_USER"];?><svg class="olymp-dropdown-arrow-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 					</div>
 					<!--<span class="author-subtitle">SPACE COWBOY</span>-->
 				</a>

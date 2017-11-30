@@ -1,32 +1,30 @@
 <?php
-<<<<<<< HEAD
 /**
 +M_User (user)
-	-user //info tentang user
-	-relationship //hubungan antar user,siapa yang melakukan action(friend request,declined,blocked,dll)
-
+    -user //info tentang user
+    -relationship //hubungan antar user,siapa yang melakukan action(friend request,declined,blocked,dll)
 **/
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_User extends CI_Model {
 
-	public function __construct()
-	{
-	  parent::__construct();
+    public function __construct()
+    {
+      parent::__construct();
       $this->load->database();
-	}
+    }
 
-=======
-defined('BASEPATH') OR exit('No direct script access allowed');
+    //Punya Niya
+    public function selectUser($param){
+        $data=array(
+            'EMAIL_USER'=>$param
+        );
+        return $this->db->get_where('user',$data)->result_array();
+    }
+    //Punya Moudy
 
-class M_User extends CI_Model {
-	public function __construct()
-	{
-	   parent::__construct();
-       $this->load->database();
-	}
-	public function insertUser($param)
-	{
+    public function insertUser($param)
+    {
         $data = array (
             'email' => $param['email'],
             'password' => $param['pass'],
@@ -44,10 +42,10 @@ class M_User extends CI_Model {
             'photo' => 'default.jpeg'
         );
         $this->db->insert('user',$data);
-	}
+    }
 
-	public function updateUser($param)
-	{
+    public function updateUser($param)
+    {
         $data = array (
             'alamat' => $param['alamat'],
             'kodepos' => $param['kodepos'],
@@ -63,10 +61,10 @@ class M_User extends CI_Model {
 
         $this->db->where('email',$param['email']);
         $this->db->update('user',$data);
-	}
+    }
 
-	public function updateUser2($emailnow, $param)
-	{
+    public function updateUser2($emailnow, $param)
+    {
         $data = array (
             'password' => $param['password'],
             'namadepan' => $param['namadepan'],
@@ -75,11 +73,62 @@ class M_User extends CI_Model {
         );
         $this->db->where('email',$param['email']);
         $this->db->update('user',$data);
-	}
+    }
 
-    public function selectUser()
+    /*public function selectUser()
     {
         return $this->db->get('user')->result_array();
-    }	
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
+    }*/
+
+    public function selectUserFriend($email)
+    {
+        $this->db->where('email !=', $email);
+        return $this->db->get('user')->result_array();
+    }
+
+    public function selectProfile($email)
+    {
+       return $this->db->where('email', $email)->get('user')->row_array();
+    }
+
+    public function selectFriend($email)
+    {
+        return $this->db->where('emailuser', $email)->get('userandfriend')->result_array();
+    }
+
+    public function selectFriendReq($email)
+    {
+        return $this->db->where('friend', $email)->get('userandfriend')->result_array();
+    }
+
+    public function deleteFriendReq($email, $emailfriend)
+    {
+        $this->db->where('emailuser',$email);
+        $this->db->where('friend',$emailfriend);
+        $this->db->delete('userandfriend');
+    }
+
+    public function ceksudahteman($email,$emailfriend)
+    {
+        return $this->db->where('emailuser',$email)->where('friend',$emailfriend)->get('userandfriend')->row_array();
+    }
+
+    public function insertFriend($email,$emailfriend)
+    {
+        $data = array (
+            'emailuser' => $email,
+            'friend' => $emailfriend
+        );
+        $this->db->insert('userandfriend',$data);
+    }
+
+    public function insertFriend2($email,$emailfriend)
+    {
+        $data = array (
+            'emailuser' => $emailfriend,
+            'friend' => $email
+        );
+        $this->db->insert('userandfriend',$data);
+    }
+
 }

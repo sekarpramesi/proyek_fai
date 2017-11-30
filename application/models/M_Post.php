@@ -1,5 +1,5 @@
 <?php
-<<<<<<< HEAD
+
 /**
 +M_Post (post)
 	-post //info tentang post, siapa yang membuat post
@@ -17,10 +17,15 @@ class M_Post extends CI_Model {
 	  parent::__construct();
       $this->load->database();
 	}
-=======
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Post extends CI_Model {   
+    public function selectAllPost($email)
+    {
+        return $this->db->where('email =', $email)->get('post')->result_array();
+    }
+
     public function selectAllPost($email)
     {
         return $this->db->where('email =', $email)->get('post')->result_array();
@@ -79,5 +84,102 @@ class M_Post extends CI_Model {
         $this->db->set('waktu', 'NOW()', FALSE);
         $this->db->insert('post',$data);
     }
->>>>>>> c9cc946429310cc71068797e9c358930298f7cd9
+
+    public function showLike($idpost)
+    {
+        return $this->db->where('idpost =', $idpost)->get('hati')->result_array();
+    }
+
+    public function cekButtonLike($idpost, $email)
+    {
+        $this->db->select();
+        $this->db->from('hati');
+        $this->db->where('idpost =', $idpost);
+        $this->db->where('email =', $email);
+        $jum = $this->db->count_all_results();
+
+        if ($jum>0)
+            return true;
+        else
+            return false;
+    }
+
+    public function countLike($idpost)
+    {
+        $hasil['jum'] = 0;
+        $this->db->select();
+        $this->db->from('hati');
+        $this->db->where('idpost', $idpost);
+        $hasil['jum'] = $this->db->count_all_results();
+        return $hasil;
+    }
+
+    public function countComment($idpost)
+    {
+        $hasil['jum'] = 0;
+        $this->db->select();
+        $this->db->from('comment');
+        $this->db->where('idpost', $idpost);
+        $hasil['jum'] = $this->db->count_all_results();
+        return $hasil;
+    }
+    public function insertLike($idpost,$email)
+    {
+        $data = array (
+            'idpost' => $idpost,
+            'email' => $email
+        );
+
+        $this->db->insert('hati',$data);
+    }
+
+    public function seeLikers($idpost)
+    {
+        return $this->db->where('idpost', $idpost)
+        ->get('hati')->result_array();
+    }
+
+    public function deleteLike($idpost, $email)
+    {
+        $data = array (
+            'idpost' => $idpost,
+            'email'=> $email
+        );
+        $this->db->where($data);
+        $this->db->delete('hati');
+    }
+
+    public function insertComment($idpost,$email,$isi)
+    {
+        $data = array (
+            'idpost' => $idpost,
+            'email' => $email,
+            'comment' => $isi
+        );
+
+        $this->db->insert('comment',$data);
+    }
+
+    public function deleteComment($idcomment)
+    {
+        $this->db->where('idcomment', $idcomment);
+        $this->db->delete('comment');
+    }
+
+    public function deletePost($idpost)
+    {
+        $this->db->where('idpost', $idpost);
+        $this->db->delete('post');
+    }
+
+    public function selectLikers($idpost)
+    {
+        return $this->db->where('idpost',$idpost)->get('hati')->result_array();
+    }
+
+    public function selectComment($idpost)
+    {
+        return $this->db->where('idpost',$idpost)->get('comment')->result_array();
+    }
+
 }

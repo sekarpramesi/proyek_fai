@@ -1,5 +1,3 @@
-		<main class="col-xl-8 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-xs-12">
-			<!--input post-->
 			<div class="ui-block">
 				<div class="news-feed-form">
 					<!-- Nav tabs -->
@@ -26,8 +24,8 @@
 									<textarea class="form-control" placeholder=""></textarea>
 								</div>
 								<div class="add-options-message">
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top"   data-original-title="ADD PHOTOS">
-										<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xlink:href="icons/icons.svg#olymp-camera-icon"></use></svg>
+									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="ADD PHOTOS">
+										<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="icons/icons.svg#olymp-camera-icon"></use></svg>
 									</a>
 
 									<button class="btn btn-primary btn-md-2">Post Status</button>
@@ -39,10 +37,3 @@
 					</div>
 				</div>
 			</div>
-			<!--end input post-->
-
-			<!--post_examples-->
-			<?php $this->load->view('template/post_examples');?>
-			<!--end post_examples-->
-
-		</main>
