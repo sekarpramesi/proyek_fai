@@ -5,7 +5,7 @@
 
 			<div class="ui-block">
 				<div class="ui-block-title">
-					<h6 class="title">Friend Suggestions</h6>
+					<h6 class="title">Friend Suggestions<span style="color:red;">TODO</span></h6>
 					<a href="<?php echo base_url();?>app/#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
 				</div>
 
@@ -71,7 +71,7 @@
 			<div class="ui-block">
 
 				<div class="ui-block-title">
-					<h6 class="title">Activity Feed</h6>
+					<h6 class="title">Activity Feed<span style="color:red;">TODO</span></h6>
 					<a href="<?php echo base_url();?>app/#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg></a>
 				</div>
 

@@ -10,21 +10,38 @@
 **/
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_Post extends CI_Model {
-
-	public function __construct()
-	{
-	  parent::__construct();
-      $this->load->database();
-	}
-
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-class M_Post extends CI_Model {   
-    public function selectAllPost($email)
+class M_Post extends CI_Model { 
+    public function __construct()
     {
-        return $this->db->where('email =', $email)->get('post')->result_array();
+      parent::__construct();
+      $this->load->database();
     }
+
+      //punya Niya
+    public function getAllPost($idUser){
+
+        $this->db->select('users.FIRST_NAME_USER,users.PHOTO_USER,users.LAST_NAME_USER,post.*');
+        $this->db->from('post,users');
+        $this->db->where('post.ID_USER = users.ID_USER AND
+            (post.ID_USER in (SELECT ID_USER_PAIR FROM relationship where ID_USER='.$idUser.' AND STATUS_RELATIONSHIP=2) OR
+            post.ID_USER in (SELECT ID_USER FROM relationship where ID_USER='.$idUser.'))');
+        $this->db->order_by('post.TIMESTAMP_POST','desc');
+        return $this->db->get()->result_array();
+    }
+    public function getAllComment(){
+        $this->db->select('users.FIRST_NAME_USER,users.LAST_NAME_USER,users.PHOTO_USER,comment_post.*');
+        $this->db->from('users,comment_post');
+        $this->db->where('users.ID_USER=comment_post.ID_USER');
+        return $this->db->get()->result_array();
+    }
+    public function getPostComment($idPost){
+        $this->db->select('users.FIRST_NAME_USER,users.LAST_NAME_USER,users.PHOTO_USER,comment_post.*');
+        $this->db->from('users,comment_post');
+        $this->db->where('users.ID_USER=comment_post.ID_USER and comment_post.ID_POST='.$idPost);
+        return $this->db->get()->result_array();
+    }
+
+    //
 
     public function selectAllPost($email)
     {

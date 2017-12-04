@@ -59,8 +59,8 @@
 	<div class="row">
 
 		<!-- Main Content -->
-		<?php foreach($container as $c){
-			$this->load->view($c);
+		<?php for($i=0;$i<count($container);$i++){
+			$this->load->view($container[$i],$passedData[$i]);
 		}?>
 		<!-- ... end Main Content -->
 

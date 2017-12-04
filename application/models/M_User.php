@@ -16,10 +16,13 @@ class M_User extends CI_Model {
 
     //Punya Niya
     public function selectUser($param){
-        $data=array(
-            'EMAIL_USER'=>$param
-        );
-        return $this->db->get_where('user',$data)->result_array();
+        $data=array();
+        if(preg_match('/\b[^\d\W_]+\b/',$param)){
+            $data=array("EMAIL_USER"=>$param);
+        }else{
+            $data=array("ID_USER"=>$param);
+        }
+        return $this->db->get_where('users',$data)->result_array();
     }
     //Punya Moudy
 

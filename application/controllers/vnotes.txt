@@ -1,12 +1,39 @@
 Interest :
--type_interest:
-1-Hobby
-2-Music
-3-Film
-4-Book
-5-Community
+	-type_interest:
+		1-Hobby
+		2-Music
+		3-Film
+		4-Book
+		5-Community
 
 School:
--type_school:
-1-High School
-2-University
+	-type_school:
+		1-High School
+		2-University
+
+User
+	-status
+		0-Inactive
+		1-Active
+
+Post
+	-type:
+		1-Text
+		2-Photo
+		3-Music
+		4-Link
+	-share:
+		0-Own Post
+		1-Shared Post
+
+Comment
+	-type:
+		1-Text
+		2-Photo
+
+Relationship
+	-status:
+	1-Pending
+	2-Accepted
+	3-Declined
+	4-Blocked

@@ -7,7 +7,8 @@ class User extends CI_Controller {
 	{
 		parent::__construct();
 		$models=array(
-			'M_User'=>'user'
+			'M_User'=>'user',
+			'M_Post'=>'post',
 		);
 		$this->load->model($models);
 	}
@@ -16,8 +17,10 @@ class User extends CI_Controller {
 		$email = $this->session->userdata('emailnow');
 		$data["title"]="Newsfeed";
 		$data["profile"]=$this->user->selectUser($email);
+		$id=$data["profile"][0]["ID_USER"];
+		$data["passedData"]=array($this->post->getAllPost($data["profile"][0]["ID_USER"]),$this->post->getAllComment());
 		$data["container"]=array("newsfeed/newsfeed");
-		//var_dump($data["profile"]);
+		//var_dump($data["passedData"]);
 		$this->load->view('template/template',$data);
 	}
 
