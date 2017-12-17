@@ -34,14 +34,20 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>app/css/jquery.mCustomScrollbar.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>app/css/simplecalendar.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>app/css/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>app/css/swiper.min.css">
+
 	<!-- Lightbox popup script-->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>app/css/magnific-popup.css">
-
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>app/css/bootstrap-select.css">
 </head>
 <body>
 
+<!-- Fixed Sidebar Left -->
+<?php $this->load->view('template/fixed_left_sidebar',$friends);?>
+<!-- ... end Fixed Sidebar Left-->
+
 <!-- Fixed Sidebar Right -->
-<?php $this->load->view('template/fixed_right_sidebar');?>
+<?php $this->load->view('template/fixed_right_sidebar',$friends);?>
 <!-- ... end Fixed Sidebar Right -->
 
 
@@ -55,8 +61,8 @@
 
 
 
-<div class="container">
-	<div class="row">
+<!--<div class="container">
+	<div class="row">-->
 
 		<!-- Main Content -->
 		<?php for($i=0;$i<count($container);$i++){
@@ -64,8 +70,8 @@
 		}?>
 		<!-- ... end Main Content -->
 
-	</div>
-</div>
+	<!--</div>
+</div>-->
 
 <!-- Window-popup Update Header Photo -->
 
@@ -119,6 +125,8 @@
 <!-- Lightbox plugin script-->
 <script src="<?php echo base_url();?>app/js/jquery.magnific-popup.min.js"></script>
 
+<!-- Swiper / Sliders -->
+<script src="<?php echo base_url();?>app/js/swiper.jquery.min.js"></script>
 
 <script src="<?php echo base_url();?>app/js/mediaelement-and-player.min.js"></script>
 <script src="<?php echo base_url();?>app/js/mediaelement-playlist-plugin.min.js"></script>

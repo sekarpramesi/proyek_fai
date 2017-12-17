@@ -1,11 +1,12 @@
 
 				<div id="newsfeed-items-grid">
-				<?php for($i=0;$i<count($passedData[0]);$i++){
+				<?php
+				for($i=0;$i<count($passedData[0]);$i++){
 					echo '<div class="ui-block">
 						<article class="hentry post">
 
 							<div class="post__author author vcard inline-items">
-								<img src='.base_url().'uploads/user/'.$passedData[0][$i]["PHOTO_USER"].'" alt="a">
+								<img src="'.base_url().'uploads/user/'.$passedData[0][$i]["PHOTO_USER"].'" alt="a">
 
 								<div class="author-date">
 									<a class="h6 post__author-name fn" href='.base_url().'app/">'.$passedData[0][$i]['FIRST_NAME_USER'].'</a>
@@ -98,7 +99,7 @@
 							if($passedData[0][$i]["ID_POST"]==$passedData[1][$j]["ID_POST"]){
 								echo '<li>
 									<div class="post__author author vcard inline-items">
-										<img src='.base_url().'app/img/author-page.jpg" alt="author">
+										<img src="'.base_url().'uploads/user/'.$passedData[1][$j]["PHOTO_USER"].'" alt="author">
 
 										<div class="author-date">
 											<a class="h6 post__author-name fn" href='.base_url().'app/02-ProfilePage.html">'.$passedData[1][$j]["FIRST_NAME_USER"].'</a>
@@ -121,13 +122,14 @@
 
 						<!--<a href='.base_url().'app/#" class="more-comments">View more comments <span>+</span></a>-->
 
-						<form class="comment-form inline-items">
+						<form class="comment-form inline-items" method="POST" 
+						action="'.base_url().'Post/insertComment/'.$passedData[0][$i]["ID_POST"].'">
 
 							<div class="post__author author vcard inline-items">
-								<img src='.base_url().'app/img/author-page.jpg" alt="author">
+								<img src="'.base_url().'uploads/user/'.$passedData[2]["PHOTO_USER"].'" alt="author">
 
 								<div class="form-group with-icon-right ">
-									<textarea class="form-control" placeholder=""  ></textarea>
+									<textarea name="txtComment" class="form-control" placeholder=""  ></textarea>
 									<div class="add-options-message">
 										<a href="'.base_url().'app/#" class="options-message" data-toggle="modal" data-target="#update-header-photo">
 											<svg class="olymp-camera-icon"><use xlink:href="'.base_url().'app/icons/icons.svg#olymp-camera-icon"></use></svg>
@@ -135,7 +137,7 @@
 									</div>
 								</div>
 							</div>
-								<button class="btn btn-md-2 btn-primary">Post Comment</button>
+								<button name="btnComment"class="btn btn-md-2 btn-primary">Post Comment</button>
 						</form>
 
 					</div>';

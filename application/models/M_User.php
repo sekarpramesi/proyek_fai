@@ -15,6 +15,17 @@ class M_User extends CI_Model {
     }
 
     //Punya Niya
+    //validation
+    public function validation($param){
+         $data=array("EMAIL_USER"=>$param["email"],"PASSWORD_USER"=>$param["password"]);
+         $query=$this->db->get_where('users',$data);
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }else{
+            return 0;
+        }
+    }
+    //CRUD
     public function selectUser($param){
         $data=array();
         if(preg_match('/\b[^\d\W_]+\b/',$param)){
@@ -22,11 +33,57 @@ class M_User extends CI_Model {
         }else{
             $data=array("ID_USER"=>$param);
         }
-        return $this->db->get_where('users',$data)->result_array();
+        $query=$this->db->get_where('users',$data);
+
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }else{
+            return 0;
+        }
     }
-    //Punya Moudy
 
     public function insertUser($param)
+    {
+        $data = array (
+            'EMAIL_USER' => $param['email'],
+            'PASSWORD_USER' => $param['password'],
+            'FIRST_NAME_USER' => $param['firstName'],
+            'LAST_NAME_USER' => $param['lastName'],
+        );
+        $this->db->insert('users',$data);
+        return $this->db->affected_rows();
+    }
+
+    public function updateUser($param,$type){
+         $data=array();
+        if($type=="personalinfo"){
+            $data=array(
+                'FIRST_NAME_USER' => $param['firstName'],
+                'LAST_NAME_USER' => $param['lastName'],
+                'ADDRESS_USER'=>$param['address'],
+                'ZIPCODE_USER'=>$param['zipcode'],
+                'BIO_USER'=>$param['bio']
+            );
+        }else if($type=="completion"){
+            $data=array("COMPLETION"=>1);
+        }
+        $this->db->where('EMAIL_USER',$param["email"]);
+        $this->db->update('users',$data);
+        return $this->db->affected_rows();
+
+    }
+
+
+    //end punya niya//
+
+
+
+
+
+
+    //Punya Moudy
+
+    public function insertUser1($param)
     {
         $data = array (
             'email' => $param['email'],
@@ -47,7 +104,7 @@ class M_User extends CI_Model {
         $this->db->insert('user',$data);
     }
 
-    public function updateUser($param)
+    public function updateUser1($param)
     {
         $data = array (
             'alamat' => $param['alamat'],

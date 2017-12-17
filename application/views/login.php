@@ -5,11 +5,11 @@
 								<div class="col-xl-12 col-lg-12 col-md-12">
 									<div class="form-group label-floating is-empty">
 										<label class="control-label">Your Email</label>
-										<input class="form-control" name="tuserlogin" placeholder="" type="email">
+										<input class="form-control" name="txtEmail" placeholder="" type="email">
 									</div>
 									<div class="form-group label-floating is-empty">
 										<label class="control-label">Your Password</label>
-										<input class="form-control" name="tpasslogin" placeholder="" type="password">
+										<input class="form-control" name="txtPassword" placeholder="" type="password">
 									</div>
 
 									<div class="remember">
@@ -23,7 +23,7 @@
 										<a href="<?php echo base_url();?>app/#" class="forgot">Forgot my Password</a>
 									</div>
 
-									<a href="#" onclick="document.forms['login'].submit();" id="btnLogin" name="btnLogin" class="btn btn-lg btn-primary full-width">Login</a>
+									<input type="submit" id="btnLogin" name="btnLogin" class="btn btn-lg btn-primary full-width" value="Login"/>
 									<!--
 									<div class="or"></div>
 

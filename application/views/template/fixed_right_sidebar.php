@@ -1,3 +1,4 @@
+
 <!-- Fixed Sidebar Right -->
 
 <div class="fixed-sidebar right">
@@ -11,70 +12,6 @@
 						<span class="icon-status online"></span>
 					</div>
 				</li>
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar62-sm.jpg" class="avatar">
-						<span class="icon-status online"></span>
-					</div>
-				</li>
-
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar68-sm.jpg" class="avatar">
-						<span class="icon-status online"></span>
-					</div>
-				</li>
-
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar69-sm.jpg" class="avatar">
-						<span class="icon-status away"></span>
-					</div>
-				</li>
-
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar70-sm.jpg" class="avatar">
-						<span class="icon-status disconected"></span>
-					</div>
-				</li>
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar64-sm.jpg" class="avatar">
-						<span class="icon-status online"></span>
-					</div>
-				</li>
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar71-sm.jpg" class="avatar">
-						<span class="icon-status online"></span>
-					</div>
-				</li>
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar72-sm.jpg" class="avatar">
-						<span class="icon-status away"></span>
-					</div>
-				</li>
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar63-sm.jpg" class="avatar">
-						<span class="icon-status status-invisible"></span>
-					</div>
-				</li>
-				<li class="inline-items js-chat-open">
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar72-sm.jpg" class="avatar">
-						<span class="icon-status away"></span>
-					</div>
-				</li>
-				<li class="inline-items js-chat-open">
-
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar71-sm.jpg" class="avatar">
-						<span class="icon-status online"></span>
-					</div>
-				</li>
 			</ul>
 		</div>
 
@@ -84,7 +21,7 @@
 			</a>
 		</div>
 
-		<a href="<?php echo base_url();?>app/34-YourAccount-ChatMessages.html" class="olympus-chat inline-items">
+		<a href="<?php echo base_url();?>#" class="olympus-chat inline-items">
 			<svg class="olymp-chat---messages-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-chat---messages-icon"></use></svg>
 		</a>
 
@@ -108,7 +45,7 @@
 					</div>
 
 					<div class="author-status">
-						<a href="<?php echo base_url();?>app/#" class="h6 author-name">Carol Summers</a>
+						<a href="<?php echo base_url();?>app/#" class="h6 author-name"><?php ?></a>
 						<span class="status">ONLINE</span>
 					</div>
 
@@ -131,139 +68,7 @@
 					</div>
 
 				</li>
-				<li class="inline-items js-chat-open">
 
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar62-sm.jpg" class="avatar">
-						<span class="icon-status online"></span>
-					</div>
-
-					<div class="author-status">
-						<a href="<?php echo base_url();?>app/#" class="h6 author-name">Mathilda Brinker</a>
-						<span class="status">AT WORK!</span>
-					</div>
-
-					<div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-
-						<ul class="more-icons">
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="START CONVERSATION" class="olymp-comments-post-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="ADD TO CONVERSATION" class="olymp-add-to-conversation-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-add-to-conversation-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="BLOCK FROM CHAT" class="olymp-block-from-chat-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-block-from-chat-icon"></use></svg>
-							</li>
-						</ul>
-
-					</div>
-
-				</li>
-
-				<li class="inline-items js-chat-open">
-
-
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar68-sm.jpg" class="avatar">
-						<span class="icon-status online"></span>
-					</div>
-
-					<div class="author-status">
-						<a href="<?php echo base_url();?>app/#" class="h6 author-name">Carol Summers</a>
-						<span class="status">ONLINE</span>
-					</div>
-
-					<div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-
-						<ul class="more-icons">
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="START CONVERSATION" class="olymp-comments-post-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="ADD TO CONVERSATION" class="olymp-add-to-conversation-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-add-to-conversation-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="BLOCK FROM CHAT" class="olymp-block-from-chat-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-block-from-chat-icon"></use></svg>
-							</li>
-						</ul>
-
-					</div>
-
-
-				</li>
-
-				<li class="inline-items js-chat-open">
-
-
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar69-sm.jpg" class="avatar">
-						<span class="icon-status away"></span>
-					</div>
-
-					<div class="author-status">
-						<a href="<?php echo base_url();?>app/#" class="h6 author-name">Michael Maximoff</a>
-						<span class="status">AWAY</span>
-					</div>
-
-					<div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-
-						<ul class="more-icons">
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="START CONVERSATION" class="olymp-comments-post-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="ADD TO CONVERSATION" class="olymp-add-to-conversation-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-add-to-conversation-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="BLOCK FROM CHAT" class="olymp-block-from-chat-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-block-from-chat-icon"></use></svg>
-							</li>
-						</ul>
-
-					</div>
-
-
-				</li>
-
-				<li class="inline-items js-chat-open">
-
-
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar70-sm.jpg" class="avatar">
-						<span class="icon-status disconected"></span>
-					</div>
-
-					<div class="author-status">
-						<a href="<?php echo base_url();?>app/#" class="h6 author-name">Rachel Howlett</a>
-						<span class="status">OFFLINE</span>
-					</div>
-
-					<div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-
-						<ul class="more-icons">
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="START CONVERSATION" class="olymp-comments-post-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="ADD TO CONVERSATION" class="olymp-add-to-conversation-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-add-to-conversation-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="BLOCK FROM CHAT" class="olymp-block-from-chat-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-block-from-chat-icon"></use></svg>
-							</li>
-						</ul>
-
-					</div>
-
-
-				</li>
 			</ul>
 
 
@@ -344,127 +149,7 @@
 
 
 				</li>
-				<li class="inline-items js-chat-open">
 
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar72-sm.jpg" class="avatar">
-						<span class="icon-status away"></span>
-					</div>
-
-					<div class="author-status">
-						<a href="<?php echo base_url();?>app/#" class="h6 author-name">Chris Greyson</a>
-						<span class="status">AWAY</span>
-					</div>
-
-					<div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-
-						<ul class="more-icons">
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="START CONVERSATION" class="olymp-comments-post-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="ADD TO CONVERSATION" class="olymp-add-to-conversation-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-add-to-conversation-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="BLOCK FROM CHAT" class="olymp-block-from-chat-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-block-from-chat-icon"></use></svg>
-							</li>
-						</ul>
-
-					</div>
-
-				</li>
-				<li class="inline-items js-chat-open">
-
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar63-sm.jpg" class="avatar">
-						<span class="icon-status status-invisible"></span>
-					</div>
-
-					<div class="author-status">
-						<a href="<?php echo base_url();?>app/#" class="h6 author-name">Nicholas Grisom</a>
-						<span class="status">INVISIBLE</span>
-					</div>
-
-					<div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-
-						<ul class="more-icons">
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="START CONVERSATION" class="olymp-comments-post-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="ADD TO CONVERSATION" class="olymp-add-to-conversation-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-add-to-conversation-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="BLOCK FROM CHAT" class="olymp-block-from-chat-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-block-from-chat-icon"></use></svg>
-							</li>
-						</ul>
-
-					</div>
-				</li>
-				<li class="inline-items js-chat-open">
-
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar72-sm.jpg" class="avatar">
-						<span class="icon-status away"></span>
-					</div>
-
-					<div class="author-status">
-						<a href="<?php echo base_url();?>app/#" class="h6 author-name">Chris Greyson</a>
-						<span class="status">AWAY</span>
-					</div>
-
-					<div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-
-						<ul class="more-icons">
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="START CONVERSATION" class="olymp-comments-post-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="ADD TO CONVERSATION" class="olymp-add-to-conversation-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-add-to-conversation-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="BLOCK FROM CHAT" class="olymp-block-from-chat-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-block-from-chat-icon"></use></svg>
-							</li>
-						</ul>
-
-					</div>
-				</li>
-				<li class="inline-items js-chat-open">
-
-					<div class="author-thumb">
-						<img alt="author" src="<?php echo base_url();?>app/img/avatar71-sm.jpg" class="avatar">
-						<span class="icon-status online"></span>
-					</div>
-
-					<div class="author-status">
-						<a href="<?php echo base_url();?>app/#" class="h6 author-name">Bruce Peterson</a>
-						<span class="status">ONLINE</span>
-					</div>
-
-					<div class="more"><svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-
-						<ul class="more-icons">
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="START CONVERSATION" class="olymp-comments-post-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-comments-post-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="ADD TO CONVERSATION" class="olymp-add-to-conversation-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-add-to-conversation-icon"></use></svg>
-							</li>
-
-							<li>
-								<svg data-toggle="tooltip" data-placement="top" data-original-title="BLOCK FROM CHAT" class="olymp-block-from-chat-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-block-from-chat-icon"></use></svg>
-							</li>
-						</ul>
-
-					</div>
-				</li>
 			</ul>
 
 		</div>
@@ -474,7 +159,7 @@
 				<input class="form-control" placeholder="Search Friends..." value="" type="text">
 			</form>
 
-			<a href="<?php echo base_url();?>app/29-YourAccount-AccountSettings.html" class="settings">
+			<a href="<?php echo base_url();?>Settings/index" class="settings">
 				<svg class="olymp-settings-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-settings-icon"></use></svg>
 			</a>
 
@@ -485,7 +170,7 @@
 
 		</div>
 
-		<a href="<?php echo base_url();?>app/34-YourAccount-ChatMessages.html" class="olympus-chat inline-items">
+		<a href="<?php echo base_url();?>Chat/index" class="olympus-chat inline-items">
 
 			<h6 class="olympus-chat-title">OLYMPUS CHAT</h6>
 			<svg class="olymp-chat---messages-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-chat---messages-icon"></use></svg>

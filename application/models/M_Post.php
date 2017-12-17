@@ -18,30 +18,93 @@ class M_Post extends CI_Model {
     }
 
       //punya Niya
-    public function getAllPost($idUser){
+    public function getPost($idUser){
+        $this->db->select('users.FIRST_NAME_USER,users.PHOTO_USER,users.LAST_NAME_USER,post.*');
+        $this->db->from('post,users');
+        $this->db->where('post.ID_USER = users.ID_USER AND users.ID_USER='.$idUser);
+        $this->db->order_by('post.TIMESTAMP_POST','desc');
+        $query=$this->db->get();
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }else{
+            return 0;
+        }
+    }
 
+    public function getAllPost($idUser){
         $this->db->select('users.FIRST_NAME_USER,users.PHOTO_USER,users.LAST_NAME_USER,post.*');
         $this->db->from('post,users');
         $this->db->where('post.ID_USER = users.ID_USER AND
             (post.ID_USER in (SELECT ID_USER_PAIR FROM relationship where ID_USER='.$idUser.' AND STATUS_RELATIONSHIP=2) OR
             post.ID_USER in (SELECT ID_USER FROM relationship where ID_USER='.$idUser.'))');
         $this->db->order_by('post.TIMESTAMP_POST','desc');
-        return $this->db->get()->result_array();
+        $query=$this->db->get();
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }else{
+            return 0;
+        }
     }
     public function getAllComment(){
         $this->db->select('users.FIRST_NAME_USER,users.LAST_NAME_USER,users.PHOTO_USER,comment_post.*');
         $this->db->from('users,comment_post');
         $this->db->where('users.ID_USER=comment_post.ID_USER');
-        return $this->db->get()->result_array();
+        $this->db->order_by('comment_post.TIMESTAMP_COMMENT_POST','desc');
+        $query=$this->db->get();
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }else{
+            return 0;
+        }
     }
     public function getPostComment($idPost){
         $this->db->select('users.FIRST_NAME_USER,users.LAST_NAME_USER,users.PHOTO_USER,comment_post.*');
         $this->db->from('users,comment_post');
         $this->db->where('users.ID_USER=comment_post.ID_USER and comment_post.ID_POST='.$idPost);
-        return $this->db->get()->result_array();
+        $this->db->order_by('comment_post.TIMESTAMP_COMMENT_POST','desc');
+        $query=$this->db->get();
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }else{
+            return 0;
+        }
     }
 
-    //
+    public function countPostStats(){
+
+    }
+
+    //CRUD FUNCTIONS POST//
+    public function insertPost($isipost, $idUser) //,$pic)
+    {
+        $data = array(
+                'ID_USER' => $idUser,
+                'CONTENT_POST' => $isipost,
+                //'pic' => $pic
+        );
+        $this->db->insert('post',$data);
+        return $this->db->affected_rows();
+    }
+    //END CRUD FUNCTIONS//
+
+    //CRUD FUNCTION COMMENT//
+    public function insertComment($idpost,$iduser,$isi)
+    {
+        $data = array (
+            'ID_POST' => $idpost,
+            'ID_USER' => $iduser,
+            'CONTENT_COMMENT_POST' => $isi
+        );
+
+        $this->db->insert('comment_post',$data);
+    }
+    //END CRUD FUNCTIONS//
+    //end punya niya//
+
+
+
+
+
 
     public function selectAllPost($email)
     {
@@ -80,16 +143,7 @@ class M_Post extends CI_Model {
         return $this->db->get('post')->row_array();
     }
 
-    public function insertPost($isipost, $email, $waktu, $pic)
-    {
-        $data = array(
-                'email' => $email,
-                'isipost' => $isipost,
-                'pic' => $pic
-        );
-        $this->db->set('waktu', 'NOW()', FALSE);
-        $this->db->insert('post',$data);
-    }
+
 
     public function insertSharedPost($isipost, $email, $share)
     {
@@ -166,16 +220,7 @@ class M_Post extends CI_Model {
         $this->db->delete('hati');
     }
 
-    public function insertComment($idpost,$email,$isi)
-    {
-        $data = array (
-            'idpost' => $idpost,
-            'email' => $email,
-            'comment' => $isi
-        );
 
-        $this->db->insert('comment',$data);
-    }
 
     public function deleteComment($idcomment)
     {

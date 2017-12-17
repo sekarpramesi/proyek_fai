@@ -10,12 +10,13 @@
 				</div>
 
 				<ul class="widget w-friend-pages-added notification-list friend-requests">
+					<?php for($i=0;$i<count($passedData[3]);$i++){?>
 					<li class="inline-items">
 						<div class="author-thumb">
-							<img src="<?php echo base_url();?>app/img/avatar38-sm.jpg" alt="author">
+							<img src="<?php echo base_url().'uploads/user/'.$passedData[3][$i]["PHOTO_USER"];?>" alt="author">
 						</div>
 						<div class="notification-event">
-							<a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Francine Smith</a>
+							<a href="<?php echo base_url();?>app/#" class="h6 notification-friend"><?php echo $passedData[3][$i]["FIRST_NAME_USER"].' '.$passedData[3][$i]["LAST_NAME_USER"];?></a>
 							<span class="chat-message-item">8 Friends in Common</span>
 						</div>
 						<span class="notification-icon">
@@ -27,42 +28,7 @@
 						</span>
 
 					</li>
-
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img src="<?php echo base_url();?>app/img/avatar39-sm.jpg" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Hugh Wilson</a>
-							<span class="chat-message-item">6 Friends in Common</span>
-						</div>
-						<span class="notification-icon">
-							<a href="<?php echo base_url();?>app/#" class="accept-request">
-								<span class="icon-add without-text">
-									<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-								</span>
-							</a>
-						</span>
-
-					</li>
-
-					<li class="inline-items">
-						<div class="author-thumb">
-							<img src="<?php echo base_url();?>app/img/avatar40-sm.jpg" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Karen Masters</a>
-							<span class="chat-message-item">6 Friends in Common</span>
-						</div>
-						<span class="notification-icon">
-							<a href="<?php echo base_url();?>app/#" class="accept-request">
-								<span class="icon-add without-text">
-									<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-								</span>
-							</a>
-						</span>
-
-					</li>
+					<?php }?>
 
 				</ul>
 

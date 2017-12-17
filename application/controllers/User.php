@@ -9,19 +9,60 @@ class User extends CI_Controller {
 		$models=array(
 			'M_User'=>'user',
 			'M_Post'=>'post',
+			'M_Friends'=>'friends'
 		);
 		$this->load->model($models);
 	}
 
 	public function index(){
-		$email = $this->session->userdata('emailnow');
-		$data["title"]="Newsfeed";
-		$data["profile"]=$this->user->selectUser($email);
-		$id=$data["profile"][0]["ID_USER"];
-		$data["passedData"]=array($this->post->getAllPost($data["profile"][0]["ID_USER"]),$this->post->getAllComment());
-		$data["container"]=array("newsfeed/newsfeed");
-		//var_dump($data["passedData"]);
-		$this->load->view('template/template',$data);
+		if($this->session->userdata["logged_in"]["access"]==1){
+			$email = $this->session->userdata["logged_in"]["email"];
+			$data["title"]="Profile";
+			$data["profile"]=$this->user->selectUser($email);
+			$id=$data["profile"][0]["ID_USER"];
+			$data["friends"]=$this->friends->selectFriends($id);
+			$data["post"]=$this->post->getPost($id);
+			$data["comment"]=$this->post->getAllComment();
+			$data["passedData"]=array("profile/timeline",$data["profile"],$data["post"],$data["comment"],$data["friends"]);
+			$data["container"]=array("profile/profile_template");
+			$this->load->view('template/template',$data);	
+		}else{
+			redirect("Dashboard/index");
+		}
+	}
+
+	public function about(){
+		if($this->session->userdata["logged_in"]["access"]==1){
+			$email = $this->session->userdata["logged_in"]["email"];
+			$data["title"]="About";
+			$data["profile"]=$this->user->selectUser($email);
+			$id=$data["profile"][0]["ID_USER"];
+			$data["friends"]=$this->friends->selectFriends($id);
+			$data["passedData"]=array("profile/about",$data["profile"]);
+			$data["container"]=array("profile/profile_template");
+			$this->load->view('template/template',$data);
+		}else{
+			redirect("Dashboard/index");
+		}		
+	}
+
+	public function friends(){
+		if($this->session->userdata["logged_in"]["access"]==1){
+			$email = $this->session->userdata["logged_in"]["email"];
+			$data["title"]="Friends";
+			$data["profile"]=$this->user->selectUser($email);
+			$id=$data["profile"][0]["ID_USER"];
+			$data["friends"]=$this->friends->selectFriends($id);
+			$data["passedData"]=array("profile/friends",$data["profile"],$data["friends"]);
+			$data["container"]=array("profile/profile_template");
+			$this->load->view('template/template',$data);
+		}else{
+			redirect("Dashboard/index");
+		}
+	}
+
+	public function settings(){
+	
 	}
 
 	public function profile()

@@ -14,15 +14,133 @@ class Home extends CI_Controller {
 	}
 
 	public function index(){
-		if($this->session->userdata('emailnow')!=""){
-			redirect('User/index');
+		if($this->input->cookie('keepUserEmail',true)!="") {
+			$email = $this->input->cookie('keepUserEmail',true);
+			$status=$this->user->selectUser($email);
+			if($status>0){
+				if($status[0]["VERIFICATION"]==1){
+
+					if($status[0]["COMPLETION"]==1){
+						$data=array("email"=>$email,"access"=>"1");
+						$this->session->set_userdata("logged_in",$data);
+						redirect('User/index');
+					}else{
+						$data=array("email"=>$email,"access"=>"0");
+						$this->session->set_userdata("logged_in",$data);
+						redirect('Dashboard/index');
+					}
+				}
+				
+			}else{
+				delete_cookie('keepUserEmail');
+				$this->load->view('landing');
+			}
+		}
+		else if($this->input->cookie('keepUserEmail',true)==""){
+			$this->load->view('landing');
+		}	
+	}
+
+	public function register(){
+		$post=$this->input->post();
+
+		$param["firstName"]=$post["txtFirstName"];
+		$param["lastName"]=$post["txtLastName"];
+		$param["email"]=$post["txtEmail"];
+		$param["password"]=$post["txtPassword"];
+		$param["confPassword"]=$post["txtConfPassword"];
+
+		$this->form_validation->set_rules('txtFirstName','First Name','required|alpha');
+		$this->form_validation->set_rules('txtLastName', 'Last Name', 'required|alpha');
+		$this->form_validation->set_rules('txtEmail', 'E-mail', 'required|valid_email');
+		$this->form_validation->set_rules('txtPassword', 'Password', 'required|min_length[6]|regex_match[/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/]');
+		$this->form_validation->set_rules('txtConfPassword', 'Confirm Password', 'required|min_length[6]|regex_match[/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/]|matches[txtPassword]');
+
+		if ($this->form_validation->run() == true){
+			$this->user->insertUser($param);
+			$this->session->set_flashdata('notif',"Registration successful! Please check your email inbox to verify your account");
+		}else{
+			$this->session->set_flashdata('errors',validation_errors());
+		}	
+	}
+
+	public function login(){
+		$post=$this->input->post();
+		$email=$post["txtEmail"];
+
+		$this->form_validation->set_rules('txtEmail', 'E-mail', 'valid_email|required');
+		$this->form_validation->set_rules('txtPassword', 'Password', 'required');
+
+		if($this->form_validation->run()==true){
+			$status=$this->user->selectUser($email);
+
+			if($status>0){
+				if($status[0]["VERIFICATION"]==1){
+
+					if($status[0]["COMPLETION"]==1){
+						$data=array("email"=>$email,"access"=>"1");
+						$this->session->set_userdata("logged_in",$data);
+						$cookie = array('name' => 'keepUserEmail', 'value' => $this->session->userdata["logged_in"]["email"], 'expire' => 60*60*24);
+						$this->input->set_cookie($cookie);
+						redirect('User/index');
+					}else{
+						$data=array("email"=>$email,"access"=>"0");
+						$this->session->set_userdata("logged_in",$data);
+						$cookie = array('name' => 'keepUserEmail', 'value' => $this->session->userdata["logged_in"]["email"], 'expire' => 60*60*24);
+						$this->input->set_cookie($cookie);
+						redirect('Settings/index');
+					}
+				}else{
+					$this->load->view('landing');
+				}
+			}
 		}else{
 			$this->load->view('landing');
 		}
+
 	}
 
-	//TODO [1]: Validation messages
-	public function login(){
+///form validation checker//////
+	
+	public function userVerification($content){
+		if($this->user->selectUser($content)){
+			$user=$this->user->selectUser($content);
+			return $this->checkVerification($user);
+		}else{
+			echo $this->form_validation->set_message('callback_userVerification','This account does not exist');
+			return false;
+		}		
+	}
+
+	public function checkVerification($param){
+		var_dump($param);
+		if($param[0]["VERIFICATION"]==1){
+			$email=$param[0]["EMAIL_USER"];
+			$password=$this->input->post('txtPassword');
+			$data=array($email,$password);
+			return checkPassword($data);
+		}else{
+			echo $this->form_validation->set_message('callback_userVerification','Your account is not verified!');
+			return false;			
+		}
+	}
+
+	public function checkPassword($param){
+		var_dump($param);
+		if($this->user->validation($param)>0){
+			return true;
+		}else{
+			echo $this->form_validation->set_message('callback_userVerification','Invalid password!');
+			return false;
+		}
+	}
+
+
+
+
+//////
+
+	public function login2(){
 		if($this->session->userdata('emailnow')==""){
 			$berhasil = false;
 			$salahpass = false;
@@ -68,7 +186,7 @@ class Home extends CI_Controller {
 				else if ($berhasil==true && $salahpass==false) //BERHASIL LOGIN
 				{
 					$this->session->set_userdata("emailnow",$userlogin);
-					redirect('User/index');
+					redirect('Newsfeed/index');
 
 				}
 			}
@@ -92,7 +210,7 @@ class Home extends CI_Controller {
 		}
 	}
 //TODO [2] : Implement register functions
-	public function register()
+	public function register2()
 	{
 		if ($this->input->post("btnreg1"))
 		{
@@ -160,6 +278,7 @@ class Home extends CI_Controller {
 
 	public function logout(){
 		$this->session->sess_destroy();
+		delete_cookie('keepUserEmail');
 		$this->session->set_flashdata('notif','Logout berhasil!');
 		redirect("Home/index");
 	}

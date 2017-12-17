@@ -1,6 +1,8 @@
+<div class="container">
+	<div class="row">
 		<main class="col-xl-8 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-xs-12">
 			<!--input post-->
-			<?php $this->load->view('newsfeed/input_post');?>
+			<?php $this->load->view('newsfeed/input_post',$profile);?>
 			<!--end input post-->
 
 			<!--post_examples-->
@@ -12,3 +14,5 @@
 		<!-- Right Sidebar -->
 		<?php $this->load->view('newsfeed/right_sidebar');?>
 		<!-- ... end Right Sidebar -->
+	</div>
+</div>

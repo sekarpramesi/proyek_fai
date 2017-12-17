@@ -1,8 +1,8 @@
 
 <!-- Top Header -->
 
-<div class="container">
-	<div class="row">
+<!--<div class="container">-->
+	<!--<div class="row">-->
 		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="ui-block">
 				<div class="top-header">
@@ -14,16 +14,17 @@
 							<div class="col-lg-5 col-md-5 ">
 								<ul class="profile-menu">
 									<li>
-										<a href="<?php echo base_url();?>app/02-ProfilePage.html" class="active">Timeline</a>
+										<a href="<?php echo base_url();?>User/Index" class="active">Timeline</a>
 									</li>
 									<li>
-										<a href="<?php echo base_url();?>app/05-ProfilePage-About.html">About</a>
+										<a href="<?php echo base_url();?>User/About">About</a>
 									</li>
 									<li>
-										<a href="<?php echo base_url();?>app/06-ProfilePage.html">Friends</a>
+										<a href="<?php echo base_url();?>User/Friends">Friends</a>
 									</li>
 								</ul>
 							</div>
+							<!--
 							<div class="col-lg-5 ml-auto col-md-5">
 								<ul class="profile-menu">
 									<li>
@@ -32,31 +33,13 @@
 									<li>
 										<a href="<?php echo base_url();?>app/09-ProfilePage-Videos.html">Videos</a>
 									</li>
-									<li>
-										<div class="more">
-											<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-											<ul class="more-dropdown more-with-triangle">
-												<li>
-													<a href="<?php echo base_url();?>app/#">Report Profile</a>
-												</li>
-												<li>
-													<a href="<?php echo base_url();?>app/#">Block Profile</a>
-												</li>
-											</ul>
-										</div>
-									</li>
 								</ul>
 							</div>
+						-->
 						</div>
 
 						<div class="control-block-button">
-							<a href="<?php echo base_url();?>app/35-YourAccount-FriendsRequests.html" class="btn btn-control bg-blue">
-								<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-							</a>
 
-							<a href="<?php echo base_url();?>app/#" class="btn btn-control bg-purple">
-								<svg class="olymp-chat---messages-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-chat---messages-icon"></use></svg>
-							</a>
 
 							<div class="btn btn-control bg-primary more">
 								<svg class="olymp-settings-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-settings-icon"></use></svg>
@@ -69,34 +52,39 @@
 										<a href="<?php echo base_url();?>app/#" data-toggle="modal" data-target="#update-header-photo">Update Header Photo</a>
 									</li>
 									<li>
-										<a href="<?php echo base_url();?>app/29-YourAccount-AccountSettings.html">Account Settings</a>
+										<a href="<?php echo base_url();?>Account/Settings">Account Settings</a>
 									</li>
 								</ul>
 							</div>
+							<a>
+							</a>
+							<a>
+							</a>
 						</div>
 					</div>
 					<div class="top-header-author">
-						<a href="<?php echo base_url();?>app/02-ProfilePage.html" class="author-thumb">
-							<img src="<?php echo base_url();?>app/img/author-main1.jpg" alt="author">
+						<a href="#" class="author-thumb">
+							<img style="width:124px;height:124px;" src="<?php echo base_url();?>uploads/user/<?php echo $passedData[1][0]["PHOTO_USER"];?>" alt="author">
 						</a>
 						<div class="author-content">
-							<a href="<?php echo base_url();?>app/02-ProfilePage.html" class="h4 author-name">James Spiegel</a>
-							<div class="country">San Francisco, CA</div>
+							<a href="<?php echo base_url();?>User/index" class="h4 author-name"><?php echo $passedData[1][0]["FIRST_NAME_USER"].' '.$passedData[1][0]["LAST_NAME_USER"];?></a>
+							<div class="country"><?php echo $passedData[1][0]["COUNTRY_USER"];?></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+	<!--</div>
+<!--</div>
 
 <!-- ... end Top Header -->
 
 
-
+<?php //var_dump($passedData);?>
 <div class="container">
-<?php foreach($profile_container as $pc){
-		$this->load->view($pc);
-	}
+<?php 
+
+	$this->load->view($passedData[0],$passedData[1]);
+	
 ?>
 </div>

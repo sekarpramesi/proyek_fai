@@ -1,9 +1,9 @@
-<?php var_dump($profile);?>
+
 <!-- Header -->
 <header class="header" id="site-header">
 
 	<div class="page-title">
-		<h6>Newsfeed</h6>
+		<a href="<?php echo base_url();?>Newsfeed/index" style="color:white;"><h6>Newsfeed</h6></a>
 	</div>
 
 	<div class="header-content-wrapper">
@@ -148,8 +148,8 @@
 				<div class="more-dropdown more-with-triangle triangle-top-center">
 					<div class="ui-block-title ui-block-title-small">
 						<h6 class="title">Chat / Messages</h6>
-						<a href="<?php echo base_url();?>app/#">Mark all as read</a>
-						<a href="<?php echo base_url();?>app/#">Settings</a>
+						<a href="<?php echo base_url();?>Chat/MarkAllRead">Mark all as read</a>
+						<a href="<?php echo base_url();?>Settings/Chat">Settings</a>
 					</div>
 
 					<div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -349,7 +349,7 @@
 
 			<div class="author-page author vcard inline-items more">
 				<div class="author-thumb">
-					<img alt="author" src="<?php echo base_url();?>app/img/author-page.jpg" class="avatar">
+					<img alt="author" style="width:36px;height:36px;" src="<?php echo base_url();?>uploads/user/<?php echo $profile[0]['PHOTO_USER'];?>" class="avatar">
 					<span class="icon-status online"></span>
 					<div class="more-dropdown more-with-triangle">
 						<div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -359,7 +359,7 @@
 
 							<ul class="account-settings">
 								<li>
-									<a href="<?php echo base_url();?>app/29-YourAccount-AccountSettings.html">
+									<a href="<?php echo base_url();?>Dashboard/index">
 
 										<svg class="olymp-menu-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-menu-icon"></use></svg>
 
@@ -367,7 +367,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="<?php echo base_url();?>index.php/Home/Logout">
+									<a href="<?php echo base_url();?>Home/Logout">
 										<svg class="olymp-logout-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-logout-icon"></use></svg>
 
 										<span>Log Out</span>
@@ -378,7 +378,7 @@
 
 					</div>
 				</div>
-				<a href="<?php echo base_url();?>app/02-ProfilePage.html" class="author-name fn">
+				<a href="<?php echo base_url();?>User/index" class="author-name fn">
 					<div class="author-title">
 						<?php echo $profile[0]["FIRST_NAME_USER"]." ".$profile[0]["LAST_NAME_USER"];?><svg class="olymp-dropdown-arrow-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 					</div>
