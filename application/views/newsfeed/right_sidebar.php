@@ -20,7 +20,7 @@
 							<span class="chat-message-item">8 Friends in Common</span>
 						</div>
 						<span class="notification-icon">
-							<a href="<?php echo base_url();?>app/#" class="accept-request">
+							<a href="<?php echo base_url().'Friends/addFriend/'.$passedData[3][$i]["ID_USER"];?>" class="accept-request">
 								<span class="icon-add without-text">
 									<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
 								</span>

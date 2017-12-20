@@ -21,6 +21,7 @@ class Settings extends CI_Controller {
 			$data["profile"]=$this->user->selectUser($email);
 			$id=$data["profile"][0]["ID_USER"];
 			$data["friends"]=$this->friends->selectFriends($id);
+			$data["friendsRequest"]=$this->friends->friendsRequest($id);
 			$data["passedData"]=array("account/personal_information",$data["profile"],$data["friends"]);
 			$data["container"]=array("account/template_account");
 			$this->load->view('template/template',$data);

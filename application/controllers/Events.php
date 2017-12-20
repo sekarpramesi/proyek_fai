@@ -24,6 +24,7 @@ class Events extends CI_Controller {
 			$data["friends"]=$this->friends->selectFriends($id);
 			$data["passedData"]=array("groups/discover",$data["profile"]);
 			$data["container"]=array("events/events");
+			$data["friendsRequest"]=$this->friends->friendsRequest($id);
 			$this->load->view('template/template',$data);
 		}else{
 			redirect("Dashboard/index");

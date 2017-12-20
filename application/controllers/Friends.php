@@ -13,5 +13,35 @@ class Friends extends CI_Controller {
 		);
 		$this->load->model($models);
 	}
+
+	public function addFriend($idFriend){
+		$email=$this->session->userdata['logged_in']['email'];
+		$user=$this->user->selectUser($email);
+		$idUser=$user[0]["ID_USER"];
+		$this->friends->addFriend($idUser,$idFriend);
+		redirect('Newsfeed/index');
+	}
+
+	public function blockFriend($idFriend){
+		$email=$this->session->userdata['logged_in']['email'];
+		$user=$this->user->selectUser($email);
+		$idUser=$user[0]["ID_USER"];
+		var_dump($this->friends->blockFriend($idUser,$idFriend));
+		redirect('User/friends');
+	}
+
+	public function acceptFriend($idFriend){
+		$email=$this->session->userdata['logged_in']['email'];
+		$user=$this->user->selectUser($email);
+		$idUser=$user[0]["ID_USER"];
+		
+		$this->friends->acceptFriend($idUser,$idFriend);
+		redirect('Newsfeed/index');
+	}
+
+	public function declineFriend($idRelationship){
+		$this->friends->declineFriend($idRelationship);
+		redirect('Newsfeed/index');		
+	}
 }
 ?>

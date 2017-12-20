@@ -277,9 +277,9 @@ class Home extends CI_Controller {
 	}
 
 	public function logout(){
+		$this->session->set_flashdata('notif','Logout berhasil!');
 		$this->session->sess_destroy();
 		delete_cookie('keepUserEmail');
-		$this->session->set_flashdata('notif','Logout berhasil!');
 		redirect("Home/index");
 	}
 

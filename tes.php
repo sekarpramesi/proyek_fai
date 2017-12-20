@@ -76,8 +76,7 @@
 		<a href="#" class="btn btn-blue btn-lg full-width">Create Group</a>
 	</div>
 
-
-</div>
+	</div>
 </div>
 <!-- ... end Window-popup Create Friends Group -->
 
@@ -85,7 +84,7 @@
 <!-- Window-popup Create Friends Group Add Friends -->
 <div class="modal fade" id="create-friend-group-add-friends">
 	<div class="modal-dialog ui-block window-popup create-friend-group create-friend-group-add-friends">
-		<a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close">
+		<a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close">
 			<svg class="olymp-close-icon"><use xlink:href="icons/icons.svg#olymp-close-icon"></use></svg>
 		</a>
 

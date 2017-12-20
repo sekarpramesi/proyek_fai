@@ -84,7 +84,7 @@
 <div class="container">
 <?php 
 
-	$this->load->view($passedData[0],$passedData[1]);
+	$this->load->view($passedData[0],$passedData[2]);
 	
 ?>
 </div>

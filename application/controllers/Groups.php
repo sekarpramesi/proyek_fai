@@ -22,6 +22,7 @@ class Groups extends CI_Controller {
 			$id=$data["profile"][0]["ID_USER"];
 			$data["tabStatus"]="mygroups";
 			$data["friends"]=$this->friends->selectFriends($id);
+			$data["friendsRequest"]=$this->friends->friendsRequest($id);
 			$data["passedData"]=array("groups/discover",$data["profile"]);
 			$data["container"]=array("groups/groups_template");
 			$this->load->view('template/template',$data);	
@@ -36,6 +37,7 @@ class Groups extends CI_Controller {
 		$data["profile"]=$this->user->selectUser($email);
 		$id=$data["profile"][0]["ID_USER"];
 		$data["tabStatus"]="discover";
+		$data["friendsRequest"]=$this->friends->friendsRequest($id);
 		$data["friends"]=$this->friends->selectFriends($id);
 		$data["passedData"]=array("groups/discover",$data["profile"]);
 		$data["container"]=array("groups/groups_template");

@@ -15,7 +15,7 @@
 					<!-- Tab panes -->
 					<div class="tab-content">
 						<div class="tab-pane active" id="home-1" role="tabpanel" aria-expanded="true">
-							<form method="POST" action="<?php echo base_url().'Post/insertPost';?>">
+								<?php echo form_open_multipart('Newsfeed/insertPost');?>
 								<div class="author-thumb">
 									<img style="width:36px;height:36px;" src="<?php echo base_url();?>uploads/user/<?php echo $passedData[2]["PHOTO_USER"];?>" alt="author">
 								</div>
@@ -24,14 +24,23 @@
 									<textarea name="txtPost" class="form-control" placeholder=""></textarea>
 								</div>
 								<div class="add-options-message">
-									<a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="ADD PHOTOS">
+									<script>
+										$(document).ready(function(){
+											$("#upload_link").on('click', function(e){
+												    e.preventDefault();
+												    $("#upload:hidden").trigger('click');
+											});
+										});
+									</script>
+									<input name="filePost" id="upload" type="file" hidden="true"/>
+									<a href="" id="upload_link" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="ADD PHOTOS/VIDEOS">
 										<svg class="olymp-camera-icon" data-toggle="modal" data-target="#update-header-photo"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-camera-icon"></use></svg>
 									</a>
 
 									<button name="btnInsertPost" class="btn btn-primary btn-md-2">Post Status</button>
 								</div>
 
-							</form>
+							<?php echo form_close();?>
 						</div>
 
 					</div>

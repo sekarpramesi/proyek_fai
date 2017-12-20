@@ -23,6 +23,7 @@ class User extends CI_Controller {
 			$data["friends"]=$this->friends->selectFriends($id);
 			$data["post"]=$this->post->getPost($id);
 			$data["comment"]=$this->post->getAllComment();
+			$data["friendsRequest"]=$this->friends->friendsRequest($id);
 			$data["passedData"]=array("profile/timeline",$data["profile"],$data["post"],$data["comment"],$data["friends"]);
 			$data["container"]=array("profile/profile_template");
 			$this->load->view('template/template',$data);	
@@ -39,6 +40,7 @@ class User extends CI_Controller {
 			$id=$data["profile"][0]["ID_USER"];
 			$data["friends"]=$this->friends->selectFriends($id);
 			$data["passedData"]=array("profile/about",$data["profile"]);
+			$data["friendsRequest"]=$this->friends->friendsRequest($id);
 			$data["container"]=array("profile/profile_template");
 			$this->load->view('template/template',$data);
 		}else{
@@ -53,6 +55,7 @@ class User extends CI_Controller {
 			$data["profile"]=$this->user->selectUser($email);
 			$id=$data["profile"][0]["ID_USER"];
 			$data["friends"]=$this->friends->selectFriends($id);
+			$data["friendsRequest"]=$this->friends->friendsRequest($id);
 			$data["passedData"]=array("profile/friends",$data["profile"],$data["friends"]);
 			$data["container"]=array("profile/profile_template");
 			$this->load->view('template/template',$data);

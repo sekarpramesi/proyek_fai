@@ -1,13 +1,5 @@
 <?php
 
-/**
-+M_Post (post)
-	-post //info tentang post, siapa yang membuat post
-	-post_like //hubungan antar post dan like
-	-post_share //post yang dishare (dianggap sebagai objek baru)
-	-comment //info tentang comment, siapa yang membuat comment dan terdapat pada post mana
-
-**/
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Post extends CI_Model { 
@@ -31,10 +23,11 @@ class M_Post extends CI_Model {
         }
     }
 
+
     public function getAllPost($idUser){
         $this->db->select('users.FIRST_NAME_USER,users.PHOTO_USER,users.LAST_NAME_USER,post.*');
         $this->db->from('post,users');
-        $this->db->where('post.ID_USER = users.ID_USER AND
+        $this->db->where('post.ID_USER = users.ID_USER OR
             (post.ID_USER in (SELECT ID_USER_PAIR FROM relationship where ID_USER='.$idUser.' AND STATUS_RELATIONSHIP=2) OR
             post.ID_USER in (SELECT ID_USER FROM relationship where ID_USER='.$idUser.'))');
         $this->db->order_by('post.TIMESTAMP_POST','desc');
@@ -74,13 +67,26 @@ class M_Post extends CI_Model {
 
     }
 
+    public function sharePost($idPost,$isipost, $idUser){
+         $data = array(
+                'ID_USER' => $idUser,
+                'CONTENT_POST' => $isipost,
+                'TYPE_POST'=>0,
+                'SHARE_POST'=>1,
+                'SHARE_REF_POST'=>$idPost
+        );
+        $this->db->insert('post',$data);
+        return $this->db->affected_rows();       
+    }
+
     //CRUD FUNCTIONS POST//
-    public function insertPost($isipost, $idUser) //,$pic)
+    public function insertPost($isipost, $idUser,$type,$pic)
     {
         $data = array(
                 'ID_USER' => $idUser,
                 'CONTENT_POST' => $isipost,
-                //'pic' => $pic
+                'EXTRA_CONTENT_POST' => $pic,
+                'TYPE_POST'=>$type
         );
         $this->db->insert('post',$data);
         return $this->db->affected_rows();
@@ -93,7 +99,7 @@ class M_Post extends CI_Model {
         $data = array (
             'ID_POST' => $idpost,
             'ID_USER' => $iduser,
-            'CONTENT_COMMENT_POST' => $isi
+            'CONTENT_COMMENT' => $isi
         );
 
         $this->db->insert('comment_post',$data);

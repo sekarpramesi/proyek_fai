@@ -22,7 +22,7 @@
 
 			<div class="control-icon more has-items">
 				<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-				<div class="label-avatar bg-blue">6</div>
+				<div class="label-avatar bg-blue"><?php echo count($friendsRequest);?></div>
 
 				<div class="more-dropdown more-with-triangle triangle-top-center">
 					<div class="ui-block-title ui-block-title-small">
@@ -32,108 +32,36 @@
 					</div>
 
 					<div class="mCustomScrollbar" data-mcs-theme="dark">
-						<ul class="notification-list friend-requests">
+							<ul class="notification-list friend-requests">
+							<?php for($i=0;$i<count($friendsRequest);$i++){?>
 							<li>
 								<div class="author-thumb">
-									<img src="<?php echo base_url();?>app/img/avatar55-sm.jpg" alt="author">
+									<img src="<?php echo base_url().'uploads/user/'.$friendsRequest[$i]["PHOTO_USER"];?>" alt="author">
 								</div>
 								<div class="notification-event">
-									<a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Tamara Romanoff</a>
-									<span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
+									<a href="<?php echo base_url();?>app/#" class="h6 notification-friend"><?php echo $friendsRequest[$i]["FIRST_NAME_USER"];?></a>
+									<span class="chat-message-item">Mutual Friend: </span>
 								</div>
-								<span class="notification-icon">
-									<a href="<?php echo base_url();?>app/#" class="accept-request">
-										<span class="icon-add without-text">
-											<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-										</span>
-									</a>
+											<span class="notification-icon">
+												<a href="<?php echo base_url().'Friends/acceptFriend/'.$friendsRequest[$i]["ID_USER"];?>" class="accept-request">
+													<span class="icon-add without-text">
+														<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+													</span>
+												</a>
 
-									<a href="<?php echo base_url();?>app/#" class="accept-request request-del">
-										<span class="icon-minus">
-											<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-										</span>
-									</a>
+												<a href="<?php echo base_url().'Friends/declineFriend/'.$friendsRequest[$i]["ID_RELATIONSHIP"];?>" class="accept-request request-del">
+													<span class="icon-minus">
+														<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+													</span>
+												</a>
 
-								</span>
+											</span>
 
 								<div class="more">
 									<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
 								</div>
 							</li>
-
-							<li>
-								<div class="author-thumb">
-									<img src="<?php echo base_url();?>app/img/avatar56-sm.jpg" alt="author">
-								</div>
-								<div class="notification-event">
-									<a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Tony Stevens</a>
-									<span class="chat-message-item">4 Friends in Common</span>
-								</div>
-								<span class="notification-icon">
-									<a href="<?php echo base_url();?>app/#" class="accept-request">
-										<span class="icon-add without-text">
-											<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-										</span>
-									</a>
-
-									<a href="<?php echo base_url();?>app/#" class="accept-request request-del">
-										<span class="icon-minus">
-											<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-										</span>
-									</a>
-
-								</span>
-
-								<div class="more">
-									<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-								</div>
-							</li>
-
-							<li class="accepted">
-								<div class="author-thumb">
-									<img src="<?php echo base_url();?>app/img/avatar57-sm.jpg" alt="author">
-								</div>
-								<div class="notification-event">
-									You and <a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Mary Jane Stark</a> just became friends. Write on <a href="<?php echo base_url();?>app/#" class="notification-link">her wall</a>.
-								</div>
-								<span class="notification-icon">
-									<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-								</span>
-
-								<div class="more">
-									<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-									<svg class="olymp-little-delete"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-little-delete"></use></svg>
-								</div>
-							</li>
-
-							<li>
-								<div class="author-thumb">
-									<img src="<?php echo base_url();?>app/img/avatar58-sm.jpg" alt="author">
-								</div>
-								<div class="notification-event">
-									<a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Stagg Clothing</a>
-									<span class="chat-message-item">9 Friends in Common</span>
-								</div>
-								<span class="notification-icon">
-									<a href="<?php echo base_url();?>app/#" class="accept-request">
-										<span class="icon-add without-text">
-											<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-										</span>
-									</a>
-
-									<a href="<?php echo base_url();?>app/#" class="accept-request request-del">
-										<span class="icon-minus">
-											<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-										</span>
-									</a>
-
-								</span>
-
-								<div class="more">
-									<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-								</div>
-							</li>
-
+							<?php }?>
 						</ul>
 					</div>
 
@@ -444,109 +372,39 @@
 			<div class="mCustomScrollbar" data-mcs-theme="dark">
 				<div class="ui-block-title ui-block-title-small">
 					<h6 class="title">FRIEND REQUESTS</h6>
-					<a href="<?php echo base_url();?>app/#">Find Friends</a>
-					<a href="<?php echo base_url();?>app/#">Settings</a>
 				</div>
-				<ul class="notification-list friend-requests">
-					<li>
-						<div class="author-thumb">
-							<img src="<?php echo base_url();?>app/img/avatar55-sm.jpg" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Tamara Romanoff</a>
-							<span class="chat-message-item">Mutual Friend: Sarah Hetfield</span>
-						</div>
-									<span class="notification-icon">
-										<a href="<?php echo base_url();?>app/#" class="accept-request">
-											<span class="icon-add without-text">
-												<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+							<ul class="notification-list friend-requests">
+							<?php for($i=0;$i<count($friendsRequest);$i++){?>
+							<li>
+								<div class="author-thumb">
+									<img src="<?php echo base_url().'uploads/user/'.$friendsRequest[$i]["PHOTO_USER"];?>" alt="author">
+								</div>
+								<div class="notification-event">
+									<a href="<?php echo base_url();?>app/#" class="h6 notification-friend"><?php echo $friendsRequest[$i]["FIRST_NAME_USER"];?></a>
+									<span class="chat-message-item">Mutual Friend: </span>
+								</div>
+											<span class="notification-icon">
+												<a href="<?php echo base_url().'Friends/acceptFriend/'.$friendsRequest[$i]["ID_USER"];?>" class="accept-request">
+													<span class="icon-add without-text">
+														<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+													</span>
+												</a>
+
+												<a href="<?php echo base_url().'Friends/declineFriend/'.$friendsRequest[$i]["ID_RELATIONSHIP"];?>" class="accept-request request-del">
+													<span class="icon-minus">
+														<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
+													</span>
+												</a>
+
 											</span>
-										</a>
 
-										<a href="<?php echo base_url();?>app/#" class="accept-request request-del">
-											<span class="icon-minus">
-												<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-											</span>
-										</a>
-
-									</span>
-
-						<div class="more">
-							<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-						</div>
-					</li>
-					<li>
-						<div class="author-thumb">
-							<img src="<?php echo base_url();?>app/img/avatar56-sm.jpg" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Tony Stevens</a>
-							<span class="chat-message-item">4 Friends in Common</span>
-						</div>
-									<span class="notification-icon">
-										<a href="<?php echo base_url();?>app/#" class="accept-request">
-											<span class="icon-add without-text">
-												<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-											</span>
-										</a>
-
-										<a href="<?php echo base_url();?>app/#" class="accept-request request-del">
-											<span class="icon-minus">
-												<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-											</span>
-										</a>
-
-									</span>
-
-						<div class="more">
-							<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-						</div>
-					</li>
-					<li class="accepted">
-						<div class="author-thumb">
-							<img src="<?php echo base_url();?>app/img/avatar57-sm.jpg" alt="author">
-						</div>
-						<div class="notification-event">
-							You and <a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Mary Jane Stark</a> just became friends. Write on <a href="<?php echo base_url();?>app/#" class="notification-link">her wall</a>.
-						</div>
-									<span class="notification-icon">
-										<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-									</span>
-
-						<div class="more">
-							<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-							<svg class="olymp-little-delete"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-little-delete"></use></svg>
-						</div>
-					</li>
-					<li>
-						<div class="author-thumb">
-							<img src="<?php echo base_url();?>app/img/avatar58-sm.jpg" alt="author">
-						</div>
-						<div class="notification-event">
-							<a href="<?php echo base_url();?>app/#" class="h6 notification-friend">Stagg Clothing</a>
-							<span class="chat-message-item">9 Friends in Common</span>
-						</div>
-									<span class="notification-icon">
-										<a href="<?php echo base_url();?>app/#" class="accept-request">
-											<span class="icon-add without-text">
-												<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-											</span>
-										</a>
-
-										<a href="<?php echo base_url();?>app/#" class="accept-request request-del">
-											<span class="icon-minus">
-												<svg class="olymp-happy-face-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-face-icon"></use></svg>
-											</span>
-										</a>
-
-									</span>
-
-						<div class="more">
-							<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
-						</div>
-					</li>
-				</ul>
-				<a href="<?php echo base_url();?>app/#" class="view-all bg-blue">Check all your Events</a>
+								<div class="more">
+									<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
+								</div>
+							</li>
+							<?php }?>
+						</ul>
+				<a href="<?php echo base_url();?>app/#" class="view-all bg-blue">Check all your Requests</a>
 			</div>
 
 		</div>

@@ -23,6 +23,7 @@ class Dashboard extends CI_Controller {
 		$data["passedData"]=array("dashboard/personal_information",$data["profile"],$data["friends"]);
 		$data["container"]=array("dashboard/template_dashboard");
 		//var_dump($data["profile"]);
+		$data["friendsRequest"]=$this->friends->friendsRequest($id);
 		$this->load->view('template/template',$data);		
 	}
 
@@ -33,6 +34,7 @@ class Dashboard extends CI_Controller {
 		$id=$data["profile"][0]["ID_USER"];
 		$data["friends"]=$this->friends->selectFriends($id);
 		$data["passedData"]=array("dashboard/personal_information",$data["profile"],$data["friends"]);
+		$data["friendsRequest"]=$this->friends->friendsRequest($id);
 		$data["container"]=array("dashboard/template_dashboard");
 		$this->load->view('template/template',$data);	
 	}
@@ -44,6 +46,7 @@ class Dashboard extends CI_Controller {
 		$id=$data["profile"][0]["ID_USER"];
 		$data["friends"]=$this->friends->selectFriends($id);
 		$data["passedData"]=array("dashboard/change_password",$data["profile"],$data["friends"]);
+		$data["friendsRequest"]=$this->friends->friendsRequest($id);
 		$data["container"]=array("dashboard/template_dashboard");
 		$this->load->view('template/template',$data);	
 	}
@@ -56,6 +59,7 @@ class Dashboard extends CI_Controller {
 		$data["friends"]=$this->friends->selectFriends($id);
 		$data["passedData"]=array("dashboard/hobbies_and_interest",$data["profile"],$data["friends"]);
 		$data["container"]=array("dashboard/template_dashboard");
+		$data["friendsRequest"]=$this->friends->friendsRequest($id);
 		$this->load->view('template/template',$data);	
 	}
 
@@ -66,6 +70,7 @@ class Dashboard extends CI_Controller {
 		$id=$data["profile"][0]["ID_USER"];
 		$data["friends"]=$this->friends->selectFriends($id);
 		$data["passedData"]=array("dashboard/education_and_employement",$data["profile"],$data["friends"]);
+		$data["friendsRequest"]=$this->friends->friendsRequest($id);
 		$data["container"]=array("dashboard/template_dashboard");
 		$this->load->view('template/template',$data);			
 	}

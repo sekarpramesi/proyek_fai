@@ -119,7 +119,7 @@
 
 									</div>
 
-									<p>'.$passedData[3][$j]["CONTENT_COMMENT_POST"].'</p>
+									<p>'.$passedData[3][$j]["CONTENT_COMMENT"].'</p>
 								</li>';
 							}
 						}
