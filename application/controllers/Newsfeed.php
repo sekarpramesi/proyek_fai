@@ -97,7 +97,8 @@ class Newsfeed extends CI_Controller {
 		$post=$this->input->post();
 		$contentComment=$post["txtComment"];
 		$this->post->insertComment($idPost,$id,$contentComment);
-		redirect('Newsfeed/index');
+		var_dump($idPost,$id,$contentComment);
+		//redirect('Newsfeed/index');
 	}
 
 	public function sharePost(){

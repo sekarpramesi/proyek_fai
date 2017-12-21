@@ -25,11 +25,6 @@
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo base_url();?>Events/index">
-						<svg class="olymp-calendar-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="CALENDAR AND EVENTS"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-calendar-icon"></use></svg>
-					</a>
-				</li>
-				<li>
 					<a href="<?php echo base_url();?>Statistics/index">
 						<svg class="olymp-stats-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="Account Stats"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-stats-icon"></use></svg>
 					</a>
@@ -124,12 +119,6 @@
 					<a href="<?php echo base_url();?>Groups/index">
 						<svg class="olymp-happy-faces-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="FRIEND GROUPS"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-happy-faces-icon"></use></svg>
 						<span class="left-menu-title">Groups</span>
-					</a>
-				</li>
-				<li>
-					<a href="<?php echo base_url();?>Events/index">
-						<svg class="olymp-calendar-icon left-menu-icon"  data-toggle="tooltip" data-placement="right"   data-original-title="CALENDAR AND EVENTS"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-calendar-icon"></use></svg>
-						<span class="left-menu-title">Calendar and Events</span>
 					</a>
 				</li>
 				<li>

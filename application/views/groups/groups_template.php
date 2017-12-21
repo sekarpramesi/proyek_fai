@@ -1,6 +1,10 @@
 
 <!-- Top Header -->
-
+<script>
+	$(document).ready(function(){
+		
+	});
+</script>
 <!--<div class="container">-->
 	<!--<div class="row">-->
 		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -12,11 +16,11 @@
 					<div class="profile-section">
 						<div class="row">
 							<div class="col-lg-5 col-md-5 ">
-								<ul class="profile-menu">
-									<li>
-										<a href="<?php echo base_url();?>Groups/index" class="active">My Groups</a>
+								<ul class="profile-menu" id="groupTabs">
+									<li id="li1" class="active">
+										<a href="<?php echo base_url();?>Groups/index">My Groups</a>
 									</li>								
-									<li>
+									<li id="li2">
 										<a href="<?php echo base_url();?>Groups/discover">Discover</a>
 									</li>
 								</ul>
@@ -34,27 +38,28 @@
 <div class="container">
 <?php 
 
-	$this->load->view($passedData[0]);
+	$this->load->view($passedData[0],$passedData[2]);
 	
 ?>
 </div>
 
 
+
 <!-- Window-popup Create Friends Group -->
-<div class="modal fade" id="create-friend-group-1">
+<div class="modal fade" id="create-group" data-user="<?php echo $profile[0]["ID_USER"];?>">
 	<div class="modal-dialog ui-block window-popup create-friend-group create-friend-group-1">
 		<a href="<?php echo base_url();?>app/#" class="close icon-close" data-dismiss="modal" aria-label="Close">
 			<svg class="olymp-close-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-close-icon"></use></svg>
 		</a>
 
 	<div class="ui-block-title">
-		<h6 class="title">Create Friend Group</h6>
+		<h6 class="title">Create Group</h6>
 	</div>
 
 	<div class="ui-block-content">
 		<form class="form-group label-floating">
 			<label class="control-label">Group Name</label>
-			<input class="form-control" placeholder="" value="Highschool Friends" type="text">
+			<input id="nameGroup" name="nameGroup" class="form-control" placeholder="" value="" type="text">
 		</form>
 
 		<form class="form-group with-button">
@@ -114,7 +119,7 @@
 			</select>
 		</form>
 
-		<a href="<?php echo base_url();?>app/#" class="btn btn-blue btn-lg full-width">Create Group</a>
+		<button name="submitGroup" id="submitGroup" class="btn btn-blue btn-lg full-width">Create Group</button>
 	</div>
 
 
@@ -123,9 +128,10 @@
 <!-- ... end Window-popup Create Friends Group -->
 
 
+
 <!-- Window-popup Create Friends Group Add Friends -->
-<div class="modal fade" id="create-friend-group-add-friends">
-	<div class="modal-dialog ui-block window-popup create-friend-group create-friend-group-add-friends">
+<div class="modal fade" id="create-group-add-friends">
+	<div class="modal-dialog ui-block window-popup create-friend-group create-friends-group-add-friends">
 		<a href="<?php echo base_url();?>app/#" class="close icon-close" data-dismiss="modal" aria-label="Close">
 			<svg class="olymp-close-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-close-icon"></use></svg>
 		</a>

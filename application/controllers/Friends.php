@@ -9,7 +9,8 @@ class Friends extends CI_Controller {
 		$models=array(
 			'M_User'=>'user',
 			'M_Post'=>'post',
-			'M_Friends'=>'friends'
+			'M_Friends'=>'friends',
+			'M_Chat'=>'chat'
 		);
 		$this->load->model($models);
 	}
@@ -36,8 +37,12 @@ class Friends extends CI_Controller {
 		$idUser=$user[0]["ID_USER"];
 		
 		$this->friends->acceptFriend($idUser,$idFriend);
+		$this->chat->insertRoom(1);
+		$room=$this->chat->getLastRoom();
+		$this->chat->insertUserRoom($idUser,$idFriend,$room[0]["ID_ROOM"]);
 		redirect('Newsfeed/index');
 	}
+
 
 	public function declineFriend($idRelationship){
 		$this->friends->declineFriend($idRelationship);

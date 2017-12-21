@@ -1,9 +1,9 @@
 <!-- Window-popup-CHAT for responsive min-width: 768px -->
 
-<div class="ui-block popup-chat popup-chat-responsive">
+<div data-toid="" data-fromid="" data-room="" class="ui-block popup-chat popup-chat-responsive" id="myPopup">
 	<div class="ui-block-title">
 		<span class="icon-status online"></span>
-		<h6 class="title" >Chat</h6>
+		<h6 id="nameUser" class="title"></h6>
 		<div class="more">
 			<svg class="olymp-three-dots-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-three-dots-icon"></use></svg>
 			<svg class="olymp-little-delete js-chat-open"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-little-delete"></use></svg>
@@ -11,6 +11,7 @@
 	</div>
 	<div class="mCustomScrollbar">
 		<ul class="notification-list chat-message chat-message-field">
+			<!--
 			<li>
 				<div class="author-thumb">
 					<img src="<?php echo base_url();?>app/img/avatar14-sm.jpg" alt="author" class="mCS_img_loaded">
@@ -19,36 +20,14 @@
 					<span class="chat-message-item">Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks</span>
 					<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 8:10pm</time></span>
 				</div>
-			</li>
-
-			<li>
-				<div class="author-thumb">
-					<img src="<?php echo base_url();?>app/img/author-page.jpg" alt="author" class="mCS_img_loaded">
-				</div>
-				<div class="notification-event">
-					<span class="chat-message-item">Don’t worry Mathilda!</span>
-					<span class="chat-message-item">I already bought everything</span>
-					<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 8:29pm</time></span>
-				</div>
-			</li>
-
-			<li>
-				<div class="author-thumb">
-					<img src="<?php echo base_url();?>app/img/avatar14-sm.jpg" alt="author" class="mCS_img_loaded">
-				</div>
-				<div class="notification-event">
-					<span class="chat-message-item">Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks</span>
-					<span class="notification-date"><time class="entry-date updated" datetime="2004-07-24T18:18">Yesterday at 8:10pm</time></span>
-				</div>
-			</li>
+			</li>-->
 		</ul>
 	</div>
 
-	<form>
-
+	<form id="sendChat">
 		<div class="form-group label-floating is-empty">
 			<label class="control-label">Press enter to post...</label>
-			<textarea class="form-control" placeholder=""></textarea>
+			<textarea class="form-control chat-box" placeholder=""></textarea>
 			<div class="add-options-message">
 				<a href="<?php echo base_url();?>app/#" class="options-message">
 					<svg class="olymp-computer-icon"><use xlink:href="<?php echo base_url();?>app/icons/icons.svg#olymp-computer-icon"></use></svg>

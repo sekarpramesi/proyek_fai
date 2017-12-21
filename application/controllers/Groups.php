@@ -9,7 +9,8 @@ class Groups extends CI_Controller {
 		$models=array(
 			'M_User'=>'user',
 			'M_Post'=>'post',
-			'M_Friends'=>'friends'
+			'M_Friends'=>'friends',
+			'M_Groups'=>'groups'
 		);
 		$this->load->model($models);
 	}
@@ -21,9 +22,10 @@ class Groups extends CI_Controller {
 			$data["profile"]=$this->user->selectUser($email);
 			$id=$data["profile"][0]["ID_USER"];
 			$data["tabStatus"]="mygroups";
+			$data["groups"]=$this->groups->getOwnedGroups($id);
 			$data["friends"]=$this->friends->selectFriends($id);
 			$data["friendsRequest"]=$this->friends->friendsRequest($id);
-			$data["passedData"]=array("groups/discover",$data["profile"]);
+			$data["passedData"]=array("groups/owned",$data["profile"],$data["groups"]);
 			$data["container"]=array("groups/groups_template");
 			$this->load->view('template/template',$data);	
 		}else{
@@ -42,6 +44,16 @@ class Groups extends CI_Controller {
 		$data["passedData"]=array("groups/discover",$data["profile"]);
 		$data["container"]=array("groups/groups_template");
 		$this->load->view('template/template',$data);
+	}
+
+	public function createGroup(){
+		$post=$this->input->post();
+		$param["idUser"]=$post["idUser"];
+		$param["nameGroup"]=$post["nameGroup"];
+		$this->groups->createGroup($param);
+		$groups=$this->groups->getLastGroup();
+		$this->groups->joinGroup($param["idUser"],$groups[0]["ID_GROUP"]);
+		echo "success";
 	}
 }
 ?>

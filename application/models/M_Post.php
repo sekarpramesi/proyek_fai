@@ -27,12 +27,20 @@ class M_Post extends CI_Model {
     public function getAllPost($idUser){
         $this->db->select('users.FIRST_NAME_USER,users.PHOTO_USER,users.LAST_NAME_USER,post.*');
         $this->db->from('post,users');
-        $this->db->where('post.ID_USER = users.ID_USER OR
-            (post.ID_USER in (SELECT ID_USER_PAIR FROM relationship where ID_USER='.$idUser.' AND STATUS_RELATIONSHIP=2) OR
-            post.ID_USER in (SELECT ID_USER FROM relationship where ID_USER='.$idUser.'))');
+        $this->db->where(
+            '   post.ID_USER = users.ID_USER AND
+                post.ID_USER ='.$idUser.'
+               AND users.ID_USER= '.$idUser.' OR
+            (post.ID_USER in (  
+                SELECT ID_USER_PAIR FROM relationship where ID_USER="'.$idUser.'" AND STATUS_RELATIONSHIP="2") OR
+            post.ID_USER in (
+                SELECT ID_USER FROM relationship where ID_USER="'.$idUser.'" AND STATUS_RELATIONSHIP="2")
+            )');
         $this->db->order_by('post.TIMESTAMP_POST','desc');
         $query=$this->db->get();
+        echo "<div style='z-index:9999;'>".$this->db->last_query()."</div>";
         if($query->num_rows()>0){
+            //return $this->db->last_query();
             return $query->result_array();
         }else{
             return 0;

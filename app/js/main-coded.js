@@ -469,7 +469,7 @@ var CRUMINA = {};
 
 	$(".js-chat-open").on('click', function () {
 		$('.popup-chat-responsive').toggleClass('open-chat');
-		return false
+        return false
 	});
     $(".js-chat-close").on('click', function () {
         $('.popup-chat-responsive').removeClass('open-chat');

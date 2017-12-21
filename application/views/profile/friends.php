@@ -3,7 +3,7 @@
 		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="ui-block responsive-flex">
 				<div class="ui-block-title">
-					<div class="h6 title">James’s Friends (86)</div>
+					<div class="h6 title"><?php echo $passedData[1][0]["FIRST_NAME_USER"];?>'s Friends <?php echo count($passedData[2]);?></div>
 					<form class="w-search">
 						<div class="form-group with-button">
 							<input class="form-control" type="text" placeholder="Search Friends...">
@@ -35,7 +35,7 @@
 
 							<div class="friend-avatar">
 								<div class="author-thumb">
-									<img src="<?php echo base_url().'uploads/user/'.$passedData[2][$i]["PHOTO_USER"];?>" alt="author">
+									<img style="width:92px;height:92px;" src="<?php echo base_url().'uploads/user/'.$passedData[2][$i]["PHOTO_USER"];?>" alt="author">
 								</div>
 								<div class="author-content">
 									<a href="<?php echo base_url();?>app/#" class="h5 author-name"><?php echo $passedData[2][$i]["FIRST_NAME_USER"];?></a>

@@ -15,108 +15,65 @@ class M_Chat extends CI_Model {
       $this->load->database();
 	}
 
-    public function insertChatRoom($judul)
-    {
-        $data = array (
-            'judul' => $judul
+    public function insertChat($idUser,$idRoom,$contentChat){
+        $data=array(
+            "ID_ROOM"=>$idRoom,
+            "ID_USER"=>$idUser,
+            "CONTENT_CHAT"=>$contentChat,
+            "TYPE_CHAT"=>1);
+        $this->db->insert('chat_message',$data);
+        return $this->db->affected_rows();
+
+    }
+    public function getChat($idRoom){
+        return $this->db->get_where('chat_message',array("ID_ROOM"=>$idRoom))->result_array();
+    }
+    public function getRoom($idUser,$idFriend){
+        $this->db->SELECT("r.ID_ROOM");
+        $this->db->FROM("user_room r");
+        $this->db->WHERE("r.ID_USER IN (".$idUser.",".$idFriend.")");
+        $this->db->group_by("r.ID_ROOM");
+        $this->db->HAVING("COUNT(*) = 
+        (
+          SELECT COUNT(*)
+          FROM user_room x
+          WHERE x.ID_ROOM = r.ID_ROOM
+          GROUP BY x.ID_ROOM
+        )");
+        $query=$this->db->get();
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }else{
+            return 0;
+        }        
+    }
+
+    public function getLastRoom(){
+        $this->db->order_by("TIMESTAMP_CREATED_ROOM",'DESC');
+        $query=$this->db->get("chat_room",1);
+        if($query->num_rows()>0){
+            return $query->result_array();
+        }else{
+            return 0;
+        }       
+    }
+    public function insertRoom($typeRoom){
+        $this->db->insert('chat_room',array("TYPE_ROOM"=>$typeRoom));
+        return $this->db->affected_rows();
+    }
+
+    public function insertUserRoom($idUser,$idFriend,$idRoom){
+        $data =array(
+                array(
+                'ID_USER'=>$idUser, 
+                'ID_ROOM'=>$idRoom
+                ),
+                array(
+                'ID_USER'=>$idFriend, 
+                'ID_ROOM'=>$idRoom
+                )
         );
-
-        $this->db->insert('chatroom',$data);
+        $this->db->insert_batch('user_room', $data);          
     }
 
-    public function selectIDChatRoom()
-    {
-        $this->db->select_max('idchat', 'idchatnow');
-        $query = $this->db->get('chatroom');
-        return $query->row_array();
-    }
-
-    public function selectAllChatRoom($email)
-    {
-        return $this->db->select('idchat')->
-        where('email',$email)->get('chatuser')->result_array();
-    }
-
-    public function selectJudulChatRoom($idchat)
-    {
-        return $this->db->where('idchat',$idchat)->get('chatroom')->row_array();
-    }
-
-    public function insertChatUser($idchat,$email)
-    {
-        $data = array (
-            'idchat' => $idchat,
-            'email' => $email
-        );
-
-        $this->db->insert('chatuser',$data);
-    }
-
-    public function selectChatUser($id,$email)
-    {
-        return $this->db->select('email')
-        ->from('chatuser')
-        ->where('idchat',$id)
-        ->where('email !=', $email)
-        ->get()->result_array();
-    }
-
-    public function selectAllChat($email)
-    {
-        return $this->db->where('email', $email)
-        ->get('chatuser')->result_array();
-    }
-
-    public function searchChat($id, $email)
-    {
-        return $this->db->where('idchat', $id)
-        ->where('email !=', $email)
-        ->get('chatuser')->result_array();
-    }
-
-    public function insertPesan($idchat, $txt, $email, $waktu, $pic)
-    {
-        $data = array(
-            'idchat' => $idchat,
-            'email' => $email,
-            'isipesan' => $txt,
-            'pic' => $pic
-        );
-        $this->db->set('waktu', 'NOW()', FALSE);
-        $this->db->insert('pesan',$data);
-    }
-
-    public function selectPesan($idchat)
-    {
-        return $this->db->where('idchat',$idchat)
-        ->get('pesan')->result_array();
-    }
-
-    public function selectLastIDPesan()
-    {
-        return $this->db->limit(1)->get('pesan')->row_array();
-    }
-
-    public function deletePesan($idchat)
-    {
-        $this->db->where('idpesan',$idchat);
-        $this->db->delete('pesan');
-    }
-
-    public function selectLastChatTime($idchat)
-    {
-        return $this->db->where('idchat',$idchat)
-        ->limit(1)->get('pesan')->row_array();
-    }
-    
-    public function AllChatRoomRecordCount($email)
-    {
-        return $this->db->where('email',$email)->count_all_results("chatuser");
-    }
-
-    public function fetchAllChatRoom($limit,$start,$email)
-    {
-        return $this->db->select('idchat')->
-        where('email',$email)->limit($limit,$start)->get('chatuser')->result_array();
-    }
 }
